@@ -3,17 +3,131 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="assets/images/prototipoicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
+    </style>
+   <!-- <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">-->
+    <link rel= "stylesheet" href = "src/ext/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="src/css/banner.css">
+    <link rel="stylesheet" href="src/css/keyframes.css">
+    <link rel="stylesheet" href="src/css/style.css.css">
     <script src="phaser.min.js"></script>
 
-    <title>¡Juego con Phaser!</title>
+    <title>¡Meatballypse!</title>
 </head>
 
 <body>
-    <h1>Juego con Phaser</h1>
-    <script type="module">
+    <header> <!-- Banner -->
+        <nav class="indice_navbar navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="index.html">Inicio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+            </div>
+          </nav></header>
+    <section>
+        <div class="indice_cont_banner"><!-- Para imagen estatica-->
+            <div class="indice_sombra"><!--Para descripcion-->
+            <h1>Meatballypse!</h1>
+            <p>Proyecto videojuego DVI</p>
+            </hr>
+                <div class="indice_cont_banner_link"><!--Para enlaces del principio-->
+                    <!--<a class="indice_banner_link_1" href="https://carmenserra.github.io/DVI/"> A Jugar!</a>-->
+                    <a href="https://carmenserra.github.io/DVI/"> A Jugar!</a>
+                    <!--<a class="indice_banner_link_2" href="https://github.com/CarmenSerra/DVI"> Repositorio</a>-->
+                    <a href="https://github.com/CarmenSerra/DVI"> Repositorio</a>
+                </div>      
+           </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div class="indice_contenedor_seccion_descrp">
+                <div class="col-md-1-9">
+                    <h2><b>Descripcion del juego</b></h2>
+
+
+                   <p>En este repositorio se encuentra el código y el acceso al proyecto de la asignatura de Desarrollo de Videojuegos mediante Tecnologías Web. En el archivo GDD incluimos información más detalla del mismo.</p>
+                </hr>
+
+
+                <p><i>
+                    Nuestro juego se desarrolla en un scroll lateral en 2D. Está ambientado en una apocalipsis zombie. 
+                    El protagonista es una albóndiga, que intenta salvar el mundo. Para ello tiene que luchar contra zombies que a su vez también son albóndigas.
+                    El protagonista puede matar o comer a sus enemigos. Para ello dispone de algunas armas que aparecerán a lo largo del juego. 
+                    Si decide matar a la albóndiga pero no comérsela, gana puntos. 
+                    En cambio, si decide comérsela, adquiere una habilidad especial, cada enemigo tiene una distinta y 
+                    potencia el personaje de diferentes maneras como por ejemplo: añadiendo vida, doblando la puntuación o la velocidad entre otras cosas.
+                    El juego consta de tres niveles y para avanzar entre ellos debe luchar contra un jefe de zona en cada uno de ellos, más el jefe final, 
+                    concluyendo así el juego y salvando el planeta albondiguil.
+                </i></p>
+                </div>
+                <div class="indice_contenedor_seccion_boton col-md-3"></div>
+
+                    <a href="#" class="btn btn-danger btn-md text-center"> Jugar!</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="indice_footer">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Meatballypse</h2>
+                    <p>Proyecto para asignatura DVI</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h2>Nosotros</h2>
+                    <p>Grupo formado por: </p>
+                    <p> Héctor Hugo Coronado Huamán</p> 
+                    <p>Carmen Serrano Avilés</p>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src = "src/ext/bootstrap/js/jquery.js"> </script>
+    <script src = "src/js/index.js"> </script>
+    <script src = "src/ext/bootstrap/js/bootstrap.min.js"> </script>
+  <!--<script type="module">
         import Game from './game.js';
 
         var config = {
@@ -32,7 +146,7 @@
             physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
         };
         new Phaser.Game(config);
-    </script>
+    </script>-->  
 </body>
 
 </html>

@@ -1,7 +1,19 @@
-# Plantilla para juegos en Phaser
+# Descripción 
 
-Plantilla básica para juegos en Phaser. Hace falta un servidor web para que se ejecute. Por ejemplo:
+En este repositorio se encuentra el código y el acceso al proyecto de la asignatura de Desarrollo de Videojuegos mediante Tecnologías Web. 
+En el archivo GDD incluimos información más detalla del mismo.
 
-```bash
-npx http-server
-```
+# Gestión del proyecto
+Llevamos la gestión del proyecto mediante la aplicación de Trello, adjuntamos el enlace a continuación. 
+https://trello.com/b/7HdMYKfu/dvi
+
+# Enlace a juego
+Enlace a la página para acceder al juego.
+
+https://carmenserra.github.io/DVI/ 
+
+
+
+# Autores:
+Carmen Serrano Avilés
+Héctor Hugo Coronado Huamán 

@@ -1,19 +1,19 @@
-#Game Design Document
+# Game Design Document
 
-##Ficha del juego
+## Ficha del juego
 Titulo:Meatball-algo
 Edad objetivo: 13-25
 Plataforma: Ordenador
 Nombre equipo: alboteam
 
-##Descripcion del juego:
+## Descripcion del juego:
 Nuestro juego se desarrolla en un scroll lateral en 2D. Está ambientado en una apocalipsis zombie. El protagonista  es una albóndiga, que intenta salvar el mundo. Para ello tiene que luchar contra zombies que a su vez también son albóndigas. El protagonista puede matar o comer a sus enemigos. Para ello dispone de algunas armas que aparecerán a lo largo del juego. Si decide matar a la albóndiga pero no comérsela, gana puntos. En cambio, si decide comérsela, adquiere una habilidad especial, cada enemigo tiene una distinta y potencia el personaje de diferentes maneras como por ejemplo: añadiendo vida, doblando la puntuación o la velocidad entre otras cosas. 
 El juego consta de tres niveles y para avanzar entre ellos debe luchar contra un jefe de zona en cada uno de ellos, más el jefe final, concluyendo así el juego y salvando el planeta albondiguil.
 
 
 
-##Mecánicas del juego
-###Protagonista 
+## Mecánicas del juego
+### Protagonista 
 Andar.
 Saltar.
 Comer.
@@ -26,13 +26,13 @@ Agrandarse(habilidad).
 Ganar vida(habilidad). 
 Morir.
 
-###Enemigos básicos 
+### Enemigos básicos 
 Andar.
 Correr (solo un tipo especial de enemigo).
 Atacar.
 Morir. 
 
-###Bosses
+### Bosses
 Andar.
 Correr.
 Atacar.
@@ -42,7 +42,7 @@ Lanzar objetos.
 Rodar.
 
 
-##Dinámicas del juego 
+## Dinámicas del juego 
 
 Enemigo sin habilidad, se acerca para atacarme, utilizo una de las armas para intentar matarlo, una vez muerto, me lo como y al haber un 10% de posibilidades de que me de un bate(arma), me lo da y lo recojo. En caso de que no tenga suerte, gano puntos. 
 
@@ -58,7 +58,7 @@ Enemigo con habilidad de dar vida,está existiendo en el mapa y me interesa mata
 
 
 
-##Principios estéticos
+## Principios estéticos
 Arte basado en 8bits. 
 
 

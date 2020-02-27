@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+}
+
+body{
+    font-family: 'Lacquer',  ;
+}
+
+
+.indice_navbar{
+background-color:  rgba(255,255,255,0.7)!important; /*Prioridad*/
+}
+
+.indice_navbar div,indice_navbar{
+    background-color: transparent !important; /*Prioridad*/
+
+}
+
+
+.indice_contenedor_seccion_descrp{
+    padding: 10%;
+}
+
+.indice_contenedor_seccion_boton{
+    padding: 5%;
+}
+
+.indice_contenedor_seccion_boton a{
+    width: 200px;
+}

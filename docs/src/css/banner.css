@@ -4,7 +4,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("assets/images/possible_background_1.png");
+    background-image: url("/assets/images/possible_background_1.png");
 }
 .indice_sombra{
     position: absolute;

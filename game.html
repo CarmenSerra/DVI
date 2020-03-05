@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MeatBallocallypse</title>
+    <script src="phaser.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden; position: relative;">
+    <script type="module">
+        //import Game from './game.js'; 1366 x 669
+
+        var config = {
+            type: Phaser.CANVAS,
+            parent: null,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            pixelArt: true,
+            scale: {
+                mode: Phaser.Scale.NONE,
+                autoCenter: Phaser.Scale.NO_CENTER
+            },
+            autoRound: false,
+            canvas: null,
+            canvasStyle: null,
+
+            scene: {
+                preload: preload,
+                create: create,
+                update: update,
+                render: render
+            },
+
+            /*callbacks: {
+                preBoot: NOOP,
+                postBoot: NOOP
+            },*/
+
+            seed: [ (Date.now() * Math.random()).toString() ],
+
+            title: '',
+            url: 'https://phaser.io',
+            version: '0.1',
+
+            input: {
+                keyboard: {
+                    target: window
+                },
+                mouse: {
+                    target: null,
+                    capture: true
+                },
+                activePointers: 1,
+                touch: {
+                    target: null,
+                    capture: true
+                },
+                smoothFactor: 0,
+                gamepad: true,
+                windowEvents: true,
+            },
+            disableContextMenu: false,
+
+            backgroundColor: 0,
+
+            render: {
+                antialias: true,
+                antialiasGL: true,
+                mipmapFilter: 'LINEAR', // 'NEAREST', 'LINEAR', 'NEAREST_MIPMAP_NEAREST', 'LINEAR_MIPMAP_NEAREST', 'NEAREST_MIPMAP_LINEAR', 'LINEAR_MIPMAP_LINEAR'
+                pixelArt: false,
+                roundPixels: false,
+                transparent: false,
+                clearBeforeRender: true,
+                premultipliedAlpha: true,
+                preserveDrawingBuffer: false,
+                failIfMajorPerformanceCaveat: false,
+                powerPreference: 'default', // 'high-performance', 'low-power' or 'default'
+                batchSize: 2000,
+                desynchronized: false,
+            },
+
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 300 },
+                    debug: false
+                }
+            },
+
+            loader:{
+                baseURL: '',
+                path: '',
+                enableParallel: true,
+                maxParallelDownloads: 4,
+                crossOrigin: undefined,
+                responseType: '',
+                async: true,
+                user: '',
+                password: '',
+                timeout: 0
+            },
+
+            images: {
+                /*default: 'data:image/png;base64....',
+                missing: 'data:image/png;base64....'*/
+            },
+
+            dom: {
+                createContainer: false,
+                behindCanvas: false,
+            },
+
+            plugins: {
+                global: [
+                    //{key, plugin, start}
+                ],
+                /*scene: [
+                    // ...
+                ]*/
+                //scene: [ Game ],
+                physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
+            },
+
+            fps: {
+                min: 10,
+                target: 60,
+                forceSetTimeOut: false,
+                deltaHistory: 10
+            },
+
+            disableContextMenu: false,
+            banner: {
+                hidePhaser: false,
+                text: '#ffffff',
+                background: [
+                    '#ff0000',
+                    '#ffff00',
+                    '#00ff00',
+                    '#00ffff',
+                    '#000000'
+                ]
+            }
+        };
+
+        var game = new Phaser.Game(config);
+        var platforms;
+        var background;
+        var player;
+        var cursors;
+
+        function preload() {
+            //this.load.image('background', 'assets/images/possible_background_1.png');
+            this.load.image('war1_sky', 'assets/images/backgrounds/War1/Bright/sky.png');
+            this.load.image('war1_sun', 'assets/images/backgrounds/War1/Bright/sun.png');
+            this.load.image('war1_ruins', 'assets/images/backgrounds/War1/Bright/ruins.png');
+            this.load.image('war1_house3', 'assets/images/backgrounds/War1/Bright/house3.png');
+            this.load.image('war1_house2', 'assets/images/backgrounds/War1/Bright/houses2.png');
+            this.load.image('war1_house1', 'assets/images/backgrounds/War1/Bright/houses1.png');
+            this.load.image('war1_road', 'assets/images/backgrounds/War1/Bright/road.png');
+
+            this.load.image('platform1', 'assets/images/platform1.png');
+            /*this.load.spritesheet('meatball', 'assets/images/prota.png', {
+                frameWidth: 100,
+                frameHeight: 100,
+                startFrame: 0,
+                endFrame: 2
+            });*/
+
+            this.load.spritesheet('meatboy', 'assets/images/meat-boy-full.png', {
+                frameWidth: 80,
+                frameHeight: 80,
+                startFrame: 0,
+                endFrame: 23
+            });
+        }
+
+        function create() {
+            // Background
+            /*background = this.add.image(window.innerWidth / 2, window.innerHeight / 2,'background');
+            background.setScale(2.1);*/
+            this.war1_sky = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_sky');
+            this.war1_sky.setOrigin(0, 0);
+            this.war1_sky.setScrollFactor(0);
+
+            this.war1_sun = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_sun');
+            this.war1_sun.setOrigin(0, 0);
+            this.war1_sun.setScrollFactor(0);
+            this.war1_sun.setScale(0.5);
+            //var background = this.add.image(window.innerWidth / 3, 0,'background').setOrigin(0, 0);
+            this.war1_ruins = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_ruins');
+            this.war1_ruins.setOrigin(0, 0);
+            this.war1_ruins.setScrollFactor(0);
+
+            this.war1_house3 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house3');
+            this.war1_house3.setOrigin(0, 0);
+            this.war1_house3.setScrollFactor(0);
+
+            this.war1_road = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_road');
+            this.war1_road.setOrigin(0, 0);
+            this.war1_road.setScrollFactor(0);
+
+            /*this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
+            this.war1_house2.setOrigin(0, 0);
+            this.war1_house2.setScrollFactor(0);
+
+            this.war1_house1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house1');
+            this.war1_house1.setOrigin(0, 0);
+            this.war1_house1.setScrollFactor(0);*/
+
+            // Scene elements
+            platforms = this.physics.add.staticGroup();
+            platforms.create(500, 430, 'platform1').setScale(2).refreshBody();
+
+            // Characters
+            player = this.physics.add.sprite(200, window.innerHeight - 150, 'meatboy');
+            player.setBounce(0.15);
+            player.setCollideWorldBounds(true);
+            player.body.setGravityY(300);
+
+            // Cameras
+            this.myCam = this.cameras.main.startFollow(player);
+
+            /*this.anims.create({
+                key: 'right',
+                frames: this.anims.generateFrameNumbers('meatball', { start: 0, end: 2 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+            this.anims.create({
+                key: 'left',
+                frames: this.anims.generateFrameNumbers('meatball', { start: 2, end: 0 }),
+                frameRate: 10,
+                repeat: -1
+            });*/
+
+            this.anims.create({
+                key: 'right',
+                frames: this.anims.generateFrameNumbers('meatboy', { start: 0, end: 8 }),
+                frameRate: 11,
+                repeat: -1
+            });
+
+            this.anims.create({
+                key: 'left',
+                frames: this.anims.generateFrameNumbers('meatboy', { start: 9, end: 17 }),
+                frameRate: 11,
+                repeat: -1
+            });
+
+            this.anims.create({
+                key: 'turn',
+                //frames: [ { key: 'meatboy', frame: 4 } ],
+                frames: this.anims.generateFrameNumbers('meatboy', { start: 18, end: 23 }),
+                frameRate: 11,
+                repeat: -1
+            });
+
+            this.physics.add.collider(player, platforms);
+
+            // Keyboard Controls
+            cursors = this.input.keyboard.createCursorKeys();
+
+            this.war1_sky.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_sun.tilePositionX = this.myCam.scrollX * .3;
+
+            console.log(this);
+        }
+
+        function update() {
+            // Player movement
+            if (cursors.left.isDown) {
+                player.setVelocityX(-160);
+                player.anims.play('left', true);
+            } else if (cursors.right.isDown) {
+                player.setVelocityX(160);
+                player.anims.play('right', true);
+            } else {
+                player.setVelocityX(0);
+                player.anims.play('turn');
+            }
+
+            if (cursors.up.isDown && player.body.touching.down) {
+                player.setVelocityY(-330);
+            }
+        }
+
+        function render() {
+            // body...
+        }
+    </script>
+</body>
+</html>

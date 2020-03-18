@@ -15,13 +15,13 @@
             width: window.innerWidth,
             height: window.innerHeight,
             pixelArt: true,
-            scale: {
+            /*scale: {
                 mode: Phaser.Scale.NONE,
                 autoCenter: Phaser.Scale.NO_CENTER
-            },
+            },*/
             autoRound: false,
-            canvas: null,
-            canvasStyle: null,
+            // canvas: null,
+            // canvasStyle: null,
 
             scene: {
                 preload: preload,
@@ -149,15 +149,16 @@
 
         function preload() {
             //this.load.image('background', 'assets/images/possible_background_1.png');
-           /* this.load.image('war1_sky', 'assets/images/backgrounds/War1/Bright/sky.png');
+            this.load.image('war1_sky', 'assets/images/backgrounds/War1/Bright/sky.png');
             this.load.image('war1_sun', 'assets/images/backgrounds/War1/Bright/sun.png');
             this.load.image('war1_ruins', 'assets/images/backgrounds/War1/Bright/ruins.png');
             this.load.image('war1_house3', 'assets/images/backgrounds/War1/Bright/house3.png');
             this.load.image('war1_house2', 'assets/images/backgrounds/War1/Bright/houses2.png');
             this.load.image('war1_house1', 'assets/images/backgrounds/War1/Bright/houses1.png');
+            this.load.image('war1_fence', 'assets/images/backgrounds/War1/Bright/fence.png');
             this.load.image('war1_road', 'assets/images/backgrounds/War1/Bright/road.png');
-            */
-            this.load.image('platform1', 'assets/images/platform1.png');
+
+            // this.load.image('platform1', 'assets/images/platform1.png');
             /*this.load.spritesheet('meatball', 'assets/images/prota.png', {
                 frameWidth: 100,
                 frameHeight: 100,
@@ -165,7 +166,7 @@
                 endFrame: 2
             });*/
 
-            
+
             //Pixels exactos del png final de los sprites
              /*-----------------PROTAGONISTA----------------*/
             this.load.spritesheet('meatboy', 'assets/PNG_Final_Todos_Los_Sprites_2.png', {
@@ -189,8 +190,6 @@
 
         function create() {
             // Background
-            background = this.add.image(window.innerWidth / 2, window.innerHeight / 2,'background');
-            background.setScale(2.1);
             this.war1_sky = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_sky');
             this.war1_sky.setOrigin(0, 0);
             this.war1_sky.setScrollFactor(0);
@@ -198,27 +197,30 @@
             this.war1_sun = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_sun');
             this.war1_sun.setOrigin(0, 0);
             this.war1_sun.setScrollFactor(0);
-            this.war1_sun.setScale(0.5);
-            //var background = this.add.image(window.innerWidth / 3, 0,'background').setOrigin(0, 0);
+
             this.war1_ruins = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_ruins');
             this.war1_ruins.setOrigin(0, 0);
             this.war1_ruins.setScrollFactor(0);
 
             this.war1_house3 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house3');
             this.war1_house3.setOrigin(0, 0);
-            this.war1_house3.setScrollFactor(0);
+            this.war1_house3.setScrollFactor(.4);
+
+            this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
+            this.war1_house2.setOrigin(0, 0);
+            this.war1_house2.setScrollFactor(.5);
+
+            this.war1_house1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house1');
+            this.war1_house1.setOrigin(0, 0);
+            this.war1_house1.setScrollFactor(.6);
+
+            this.war1_fence = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_fence');
+            this.war1_fence.setOrigin(0, 0);
+            this.war1_fence.setScrollFactor(.7);
 
             this.war1_road = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_road');
             this.war1_road.setOrigin(0, 0);
             this.war1_road.setScrollFactor(0);
-
-            /*this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
-            this.war1_house2.setOrigin(0, 0);
-            this.war1_house2.setScrollFactor(0);
-
-            this.war1_house1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house1');
-            this.war1_house1.setOrigin(0, 0);
-            this.war1_house1.setScrollFactor(0);*/
 
             // Scene elements
             //platforms = this.physics.add.staticGroup();
@@ -239,7 +241,9 @@
             player.body.setGravityY(300);
 
             // Cameras
-            this.myCam = this.cameras.main.startFollow(player);
+            this.myCam = this.cameras.main;
+            this.myCam.setBounds(0, 0, game.config.width * 3, game.config.height);
+            this.myCam.startFollow(player);
 
 
             //Movements
@@ -280,7 +284,7 @@
             });
 
 
-            
+
             /*this.anims.create({
                 key: 'right',
                 frames: this.anims.generateFrameNumbers('meatboy', { start: 0, end: 8 }),
@@ -308,8 +312,14 @@
             // Keyboard Controls
             cursors = this.input.keyboard.createCursorKeys();
 
-            this.war1_sky.tilePositionX = this.myCam.scrollX * .3;
-            this.war1_sun.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_sky.tilePositionX = this.myCam.scrollX * .2;
+            this.war1_sun.tilePositionX = this.myCam.scrollX * .2;
+            this.war1_ruins.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_house3.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_house2.tilePositionX = this.myCam.scrollX * .4;
+            this.war1_house1.tilePositionX = this.myCam.scrollX * .5;
+            this.war1_fence.tilePositionX = this.myCam.scrollX * .8;
+            this.war1_road.tilePositionX = this.myCam.scrollX;
 
             console.log(this);
         }

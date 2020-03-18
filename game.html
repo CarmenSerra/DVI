@@ -166,6 +166,10 @@
                 endFrame: 2
             });*/
 
+            /*PROBANDO BACKGROUNDS*/
+            /*this.load.image('background_1', 'assets/BK1_bg.png');
+            this.load.image('columns_and_floor', 'assets/BK1_columns&floor.png');
+            this.load.image('train', 'assets/BK1_train.png');*/
 
             //Pixels exactos del png final de los sprites
              /*-----------------PROTAGONISTA----------------*/
@@ -206,7 +210,44 @@
             this.war1_house3.setOrigin(0, 0);
             this.war1_house3.setScrollFactor(.4);
 
+<<<<<<< HEAD
             this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
+=======
+            this.war1_road = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_road');
+            this.war1_road.setOrigin(0, 0);
+            this.war1_road.setScrollFactor(0);
+
+
+            /*PROBANDO BACKGROUNDS*/
+           // this.physics.startSystem(Phaser.Physics.ARCADE);
+
+
+            this.background_1_obj = this.add,tileSprite(0,
+            this.height - this.cache.getImage('background_1').height,
+            this.width,
+            this.game.cache.getImage('background_1').height,
+            'background_1'
+            );
+
+            this.columns_and_floor_obj = this.add,tileSprite(0,
+            this.height - this.cache.getImage('columns_and_floor').height,
+            this.width,
+            this.game.cache.getImage('columns_and_floor').height,
+            'columns_and_floor'
+            );
+
+            this.train_obj = this.add,tileSprite(0,
+            this.height - this.cache.getImage('train').height,
+            this.width,
+            this.game.cache.getImage('train').height,
+            'train'
+            );
+
+
+
+
+            /*this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
+>>>>>>> 2213434355e0fcf2a3a136f8cd5f95e1c1914073
             this.war1_house2.setOrigin(0, 0);
             this.war1_house2.setScrollFactor(.5);
 
@@ -340,6 +381,11 @@
             if (cursors.up.isDown && player.body.touching.down) {
                 player.setVelocityY(-330);
             }
+                 /*PROBANDO BACKGROUNDS*/
+                this.background_1_obj.tilePosition.x -=0.05;
+                this.columns_and_floor_obj.tilePosition.x -=0.3;
+                this.train_obj.tilePosition.x-=0.75;
+
         }
 
         function render() {

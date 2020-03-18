@@ -210,9 +210,18 @@
             this.war1_house3.setOrigin(0, 0);
             this.war1_house3.setScrollFactor(.4);
 
-<<<<<<< HEAD
             this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
-=======
+            this.war1_house2.setOrigin(0, 0);
+            this.war1_house2.setScrollFactor(.5);
+
+            this.war1_house1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house1');
+            this.war1_house1.setOrigin(0, 0);
+            this.war1_house1.setScrollFactor(.6);
+
+            this.war1_fence = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_fence');
+            this.war1_fence.setOrigin(0, 0);
+            this.war1_fence.setScrollFactor(.7);
+
             this.war1_road = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_road');
             this.war1_road.setOrigin(0, 0);
             this.war1_road.setScrollFactor(0);
@@ -222,7 +231,7 @@
            // this.physics.startSystem(Phaser.Physics.ARCADE);
 
 
-            this.background_1_obj = this.add,tileSprite(0,
+            /*this.background_1_obj = this.add,tileSprite(0,
             this.height - this.cache.getImage('background_1').height,
             this.width,
             this.game.cache.getImage('background_1').height,
@@ -241,27 +250,7 @@
             this.width,
             this.game.cache.getImage('train').height,
             'train'
-            );
-
-
-
-
-            /*this.war1_house2 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house2');
->>>>>>> 2213434355e0fcf2a3a136f8cd5f95e1c1914073
-            this.war1_house2.setOrigin(0, 0);
-            this.war1_house2.setScrollFactor(.5);
-
-            this.war1_house1 = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_house1');
-            this.war1_house1.setOrigin(0, 0);
-            this.war1_house1.setScrollFactor(.6);
-
-            this.war1_fence = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_fence');
-            this.war1_fence.setOrigin(0, 0);
-            this.war1_fence.setScrollFactor(.7);
-
-            this.war1_road = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'war1_road');
-            this.war1_road.setOrigin(0, 0);
-            this.war1_road.setScrollFactor(0);
+            );*/
 
             // Scene elements
             //platforms = this.physics.add.staticGroup();
@@ -381,11 +370,20 @@
             if (cursors.up.isDown && player.body.touching.down) {
                 player.setVelocityY(-330);
             }
-                 /*PROBANDO BACKGROUNDS*/
-                this.background_1_obj.tilePosition.x -=0.05;
-                this.columns_and_floor_obj.tilePosition.x -=0.3;
-                this.train_obj.tilePosition.x-=0.75;
 
+             /*PROBANDO BACKGROUNDS*/
+            /*this.background_1_obj.tilePosition.x -=0.05;
+            this.columns_and_floor_obj.tilePosition.x -=0.3;
+            this.train_obj.tilePosition.x-=0.75;*/
+
+            this.war1_sky.tilePositionX = this.myCam.scrollX * .2;
+            this.war1_sun.tilePositionX = this.myCam.scrollX * .2;
+            this.war1_ruins.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_house3.tilePositionX = this.myCam.scrollX * .3;
+            this.war1_house2.tilePositionX = this.myCam.scrollX * .4;
+            this.war1_house1.tilePositionX = this.myCam.scrollX * .5;
+            this.war1_fence.tilePositionX = this.myCam.scrollX * .8;
+            this.war1_road.tilePositionX = this.myCam.scrollX;
         }
 
         function render() {

@@ -293,6 +293,13 @@
                 repeat: -1
             });
 
+            this.anims.create({
+                key: 'turn',
+                frames: this.anims.generateFrameNumbers('meatboy', 3),
+                frameRate: 11,
+                repeat: -1
+            });
+
 
             /*-----------------ENEMIGOS----------------*/
             /*-------------RUNNER-------------*/
@@ -304,7 +311,6 @@
                 repeat: -1
             });
 
-
             /*-----------IZQUIERDA--------*/
             this.anims.create({
                 key: 'left',
@@ -313,43 +319,17 @@
                 repeat: -1
             });
 
-
-
-            /*this.anims.create({
-                key: 'right',
-                frames: this.anims.generateFrameNumbers('meatboy', { start: 0, end: 8 }),
-                frameRate: 11,
-                repeat: -1
-            });
-
-            this.anims.create({
-                key: 'left',
-                frames: this.anims.generateFrameNumbers('meatboy', { start: 9, end: 17 }),
-                frameRate: 11,
-                repeat: -1
-            });
-
             this.anims.create({
                 key: 'turn',
-                //frames: [ { key: 'meatboy', frame: 4 } ],
-                frames: this.anims.generateFrameNumbers('meatboy', { start: 18, end: 23 }),
+                frames: this.anims.generateFrameNumbers('enemyrunner', 3),
                 frameRate: 11,
                 repeat: -1
-            });*/
+            });
 
             this.physics.add.collider(player, platforms);
 
             // Keyboard Controls
             cursors = this.input.keyboard.createCursorKeys();
-
-            this.war1_sky.tilePositionX = this.myCam.scrollX * .2;
-            this.war1_sun.tilePositionX = this.myCam.scrollX * .2;
-            this.war1_ruins.tilePositionX = this.myCam.scrollX * .3;
-            this.war1_house3.tilePositionX = this.myCam.scrollX * .3;
-            this.war1_house2.tilePositionX = this.myCam.scrollX * .4;
-            this.war1_house1.tilePositionX = this.myCam.scrollX * .5;
-            this.war1_fence.tilePositionX = this.myCam.scrollX * .8;
-            this.war1_road.tilePositionX = this.myCam.scrollX;
 
             console.log(this);
         }
@@ -370,6 +350,15 @@
             if (cursors.up.isDown && player.body.touching.down) {
                 player.setVelocityY(-330);
             }
+
+            this.war1_sky.tilePositionX += 5;
+            this.war1_sun.tilePositionX += 5
+            this.war1_ruins.tilePositionX += 5;
+            this.war1_house3.tilePositionX += 5;
+            this.war1_house2.tilePositionX += 5;
+            this.war1_house1.tilePositionX += 5;
+            this.war1_fence.tilePositionX += 5;
+            this.war1_road.tilePositionX += 5;
 
              /*PROBANDO BACKGROUNDS*/
             /*this.background_1_obj.tilePosition.x -=0.05;

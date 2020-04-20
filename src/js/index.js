@@ -1,5 +1,6 @@
 //import 'phaser';
 import config from './config/config.js';
+import Model from './Model.js';
 import GameScene from './scenes/GameScene.js';
 import BootScene from './scenes/BootScene.js';
 import PreloaderScene from './scenes/PreloaderScene.js';
@@ -11,6 +12,10 @@ class Game extends Phaser.Game
 {
   constructor() {
     super(config);
+
+    const model = new Model();
+
+    this.globals = { model, bgMusic: null };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);

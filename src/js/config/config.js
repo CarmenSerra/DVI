@@ -1,5 +1,3 @@
-//import 'phaser';
-
 export default {
   type: Phaser.AUTO,
   parent: 'Meatballypse-game',

@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Apocalypse";
+  src: url(../../assets/fonts/Apocalypse.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sanguis";
+  src: url(../../assets/fonts/Sanguis.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "HydratingLip";
+  src: url(../../assets/fonts/HydratingLip.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "IsWasted";
+  src: url(../../assets/fonts/IsWasted.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mania";
+  src: url(../../assets/fonts/Mania.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "TooMuchInk";
+  src: url(../../assets/fonts/TooMuchInk.ttf) format("truetype");
+}

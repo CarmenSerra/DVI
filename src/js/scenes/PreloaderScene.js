@@ -60,7 +60,7 @@ export default class PreloaderScene extends Phaser.Scene
     assetText.setOrigin(0.5, 0.5);
 
     // Update progress bar
-    this.load.on('progress', function (value) {
+    this.load.on('progress', (value) => {
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
@@ -68,7 +68,7 @@ export default class PreloaderScene extends Phaser.Scene
     });
 
     // Update file progress text
-    this.load.on('fileprogress', function(file) {
+    this.load.on('fileprogress', (file) => {
       assetText.setText('Loading asset: ' + file.key);
     });
 
@@ -81,12 +81,13 @@ export default class PreloaderScene extends Phaser.Scene
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);
 
     // Here we load images for main screen game (title and buttons)
     this.load.image('logo', 'assets/images/possible_background_1.png');
     this.load.image('button', 'assets/images/test_button.png');
     this.load.image('button_hover', 'assets/images/test_button_hover.png');
+    this.load.audio('myst', 'assets/musica/myst-on-the-moor.mp3');
     // Maybe move before game executes (play scene)
   }
 

@@ -13,14 +13,14 @@ export default class CreditsScene extends Phaser.Scene
         position: -350,
         duration: 8000,
         delay: 2000,
-        offset: 1500
+        offset: 1100
       },
       {
         name: 'Héctor Hugo Coronado Huamán',
         position: -400,
         duration: 8500,
         delay: 2000,
-        offset: 1600
+        offset: 1250
       }
     ];
 
@@ -28,11 +28,13 @@ export default class CreditsScene extends Phaser.Scene
     let colorText = '#fff';
 
     this.creditsText = this.add.text(0, 0, 'Credits', {
+      fontFamily: 'TooMuchInk',
       fontSize: '60px',
       fill: colorText
     });
 
     this.madeByText = this.add.text(0, 0, 'Created By', {
+      fontFamily: 'TooMuchInk',
       fontSize: '44px',
       fill: colorText
     });
@@ -70,6 +72,7 @@ export default class CreditsScene extends Phaser.Scene
 
     let authorsText = authors.map((author) => {
       let authorText = this.add.text(0, 0, author.name, {
+        fontFamily: 'TooMuchInk',
         fontSize: textSize,
         fill: colorText
       });
@@ -84,9 +87,7 @@ export default class CreditsScene extends Phaser.Scene
         ease: 'Power1',
         duration: author.duration,
         delay: author.delay,
-        onComplete: () => {
-          authorText.destroy;
-        }
+        onComplete: () => authorText.destroy
       });
 
       return authorText;

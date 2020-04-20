@@ -15,7 +15,7 @@ export default class TitleScene extends Phaser.Scene
     this.centerButton(this.gameButton, 1);
 
     this.gameText = this.add.text(0, 0, 'Play!', {
-      // fontFamily: 'Lacquer',
+      fontFamily: 'IsWasted',
       fontSize: '32px',
       fill: '#fff'
     });
@@ -28,6 +28,7 @@ export default class TitleScene extends Phaser.Scene
     this.centerButton(this.optionsButton);
 
     this.optionsText = this.add.text(0, 0, 'Options', {
+      fontFamily: 'IsWasted',
       fontSize: '32px',
       fill: '#fff'
     });
@@ -39,10 +40,8 @@ export default class TitleScene extends Phaser.Scene
     this.creditsButton = this.add.sprite(250, 125, 'button').setInteractive();
     this.centerButton(this.creditsButton, -1);
 
-    this.creditsText = this.add.text(0, 0, 'Credits', {
-      fontSize: '32px',
-      fill: '#fff'
-    });
+    this.creditsText = this.add.text(0, 0, 'Credits', { fontFamily: 'IsWasted', fontSize: '32px', fill: '#fff' });
+
     this.centerButtonText(this.creditsText, this.creditsButton);
 
     this.creditsButton.on('pointerdown', (pointer) => this.scene.start('Credits'));
@@ -51,6 +50,15 @@ export default class TitleScene extends Phaser.Scene
     this.input.on('pointerover', (event, gameObjects) => gameObjects[0].setTexture('button_hover'));
 
     this.input.on('pointerout', (event, gameObjects) => gameObjects[0].setTexture('button'));
+
+    this.model = this.sys.game.globals.model;
+
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('myst', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
   }
 
   centerButton(gameObject, offset = 0) {

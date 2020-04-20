@@ -1,24 +1,27 @@
-@keyframes indice_keyframes_aparecer_arriba{ /*De momento en desuso*/
-    form{
-        opacity: 0;
-        top: -150%;    
-    }
-    tp{
-        opacity: 1;
-        top:0;
-    }
+/*De momento en desuso*/
+@keyframes indice_keyframes_aparecer_arriba {
+  form {
+    opacity: 0;
+    top: -150%;
+  }
+
+  tp {
+      opacity: 1;
+      top:0;
+  }
 }
 
 /* Para otros navegadores:
-@webkit-keyframes  indice_keyframes_aparecer_arriba{ De momento en desuso
- form{
-        opacity: 0;
-        top: -150%;    
-    }
-    tp{
-        opacity: 1;
-        top:0;
-    }
+  De momento en desuso
+@webkit-keyframes  indice_keyframes_aparecer_arriba {
+  form {
+    opacity: 0;
+    top: -150%;
+  }
 
+  tp {
+    opacity: 1;
+    top:0;
+  }
 }
 */

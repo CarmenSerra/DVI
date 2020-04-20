@@ -62,11 +62,11 @@
 
 /* De momento en desuso */
 .indice_banner_link {
-    opacity:0;
-    animation: indice_keyframes_aparecer_arriba 1s;
-    /*Para otros navegadores
-    -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
-    animation-fill-mode: forwards;
+  opacity:0;
+  animation: indice_keyframes_aparecer_arriba 1s;
+  /*Para otros navegadores
+  -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
+  animation-fill-mode: forwards;
 }
 
 /* De momento en desuso */

@@ -1,86 +1,90 @@
-.indice_cont_banner{
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url("/possible_background_1.png");
-}
-.indice_sombra{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    /* Para que funcione en otros navegadores
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    */
-    transform: translate(-50%,-50%);
-    padding: 20px;
-    width: 80%;
-    text-align: center;
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    margin: auto;
+.indice_cont_banner {
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("docs/possible_background_1.png");
 }
 
-.indice_sombra hr{
-    border-top: 1px solid #fff;
+.indice_sombra {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Para que funcione en otros navegadores
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  */
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  margin: auto;
 }
 
-.indice_sombra h1{
-    font-size: 8vw;
-    margin-bottom: 10px;
+.indice_sombra hr {
+  border-top: 1px solid #fff;
 }
 
-.indice_sombra p{
-    font-size: 4vw;
-    margin-bottom: 10px;
+.indice_sombra h1 {
+  font-size: 8vw;
+  margin-bottom: 10px;
+}
+
+.indice_sombra p {
+  font-size: 4vw;
+  margin-bottom: 10px;
 }
 
 
-.indice_cont_banner_link{
-    margin: 15px;
-    position: relative;
+.indice_cont_banner_link {
+  margin: 15px;
+  position: relative;
 }
 
-.indice_cont_banner_link a{
-    position: relative;
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    border:1px solid #fff;
-    padding:  1px;
-    margin-bottom: 5px;
-    width: 150px;
+.indice_cont_banner_link a {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border:1px solid #fff;
+  padding:  1px;
+  margin-bottom: 5px;
+  width: 150px;
 }
 
-.indice_cont_banner_link a:hover{
-    background-color: #fff;
-    color: black;
-
+.indice_cont_banner_link a:hover {
+  background-color: #fff;
+  color: black;
 }
 
-.indice_banner_link{ /*De momento en desuso*/
+/* De momento en desuso */
+.indice_banner_link {
     opacity:0;
     animation: indice_keyframes_aparecer_arriba 1s;
     /*Para otros navegadores
     -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
     animation-fill-mode: forwards;
 }
-.indice_banner_link_1{ /*De momento en desuso*/
-    opacity:0;
-    animation: indice_keyframes_aparecer_arriba 1s;
-    /*Para otros navegadores
-    -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
-    animation-fill-mode: forwards;
-    animation-delay: 0.5s;
+
+/* De momento en desuso */
+.indice_banner_link_1 {
+  opacity:0;
+  animation: indice_keyframes_aparecer_arriba 1s;
+  /*Para otros navegadores
+  -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
 }
 
-.indice_banner_link_2{/*De momento en desuso*/
-    opacity:0;
-    animation: indice_keyframes_aparecer_arriba 1s;
-    /*Para otros navegadores
-    -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
-    animation-fill-mode: forwards;
-    animation-delay: 1ss;
+/*De momento en desuso*/
+.indice_banner_link_2 {
+  opacity:0;
+  animation: indice_keyframes_aparecer_arriba 1s;
+  /*Para otros navegadores
+  -webkit-animation: indice_keyframes_aparecer_arriba 1s;*/
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
 }

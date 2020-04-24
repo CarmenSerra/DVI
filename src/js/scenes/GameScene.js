@@ -7,10 +7,15 @@ export default class GameScene extends Phaser.Scene
   }
 
   preload() {
-    this.load.image('logo', 'assets/images/phaser_logo.png');
+    this.load.image('logo2', 'assets/images/phaser_logo.png');
   }
 
   create() {
-    this.add.image(400, 300, 'logo');
+    //prota = new Prota();
+    this.add.image(400, 300, 'logo2');
+  }
+
+  update(time, delta) {
+
   }
 };

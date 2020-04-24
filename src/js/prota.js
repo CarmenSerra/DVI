@@ -1,4 +1,4 @@
-import Star from './star.js'
+//  import Star from './star.js'
 
 
 export default class Player extends Phaser.GameObjects.Sprite

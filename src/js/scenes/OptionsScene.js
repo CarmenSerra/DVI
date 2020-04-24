@@ -1,4 +1,5 @@
 import config from '../config/config.js';
+import Button from '../components/Button.js';
 
 export default class OptionsScene extends Phaser.Scene
 {
@@ -18,16 +19,25 @@ export default class OptionsScene extends Phaser.Scene
       fill: '#fff'
     });
 
-    this.centerButton(this.text, 2);
+    this.text.setOrigin(0.1, 0.5);
 
-    this.musicButton = this.add.sprite(250, 125, 'button').setInteractive();
-    // this.musicButton = this.add.image(200, 200, 'checkedBox');
+    // this.centerButton(this.text, 2);
+
+    // this.musicButton = this.add.sprite(250, 125, 'button').setInteractive();
+    this.musicButton = new Button({
+      current: this,
+      x: this.cameras.main.centerX,
+      y: 125,
+      image: 'button',
+      alt: 'button_hover',
+    });
+
     this.musicText = this.add.text(0, 0, 'Music: ' + this.musicState(), {
       fontFamily: 'TooMuchInk',
       fontSize: 24,
       fill: '#fff'
     });
-    this.centerButton(this.musicButton, 1);
+    // this.centerButton(this.musicButton, 1);
 
     Phaser.Display.Align.In.Center(this.musicText, this.musicButton);
 
@@ -38,7 +48,7 @@ export default class OptionsScene extends Phaser.Scene
       fontSize: 24,
       fill: '#fff'
     });
-    this.centerButton(this.soundButton);
+    // this.centerButton(this.soundButton);
 
     Phaser.Display.Align.In.Center(this.soundText, this.soundButton);
 
@@ -57,7 +67,7 @@ export default class OptionsScene extends Phaser.Scene
 
     //this.updateAudio();
 
-    this.menuButton = this.add.sprite(250, 125, 'button').setInteractive();
+    /*this.menuButton = this.add.sprite(250, 125, 'button').setInteractive();
     this.menuText = this.add.text(0, 0, 'Go Back', {
       fontFamily: 'TooMuchInk',
       fontSize: 24,
@@ -67,14 +77,19 @@ export default class OptionsScene extends Phaser.Scene
 
     Phaser.Display.Align.In.Center(this.menuText, this.menuButton);
 
-    this.menuButton.on('pointerdown', (pointer) => this.scene.start('Title'));
-  }
+    this.menuButton.on('pointerdown', (pointer) => this.scene.start('Title'));*/
 
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-    );
+    this.menuButton = new Button({
+      current: this,
+      x: config.width / 2,
+      y: config.height / 2 + 200,
+      image: 'button',
+      alt: 'button_hover',
+      text: 'Go Back',
+      target: 'Title'
+    });
+
+    //this.centerButton(this.menuButton, -2);
   }
 
   updateAudio() {

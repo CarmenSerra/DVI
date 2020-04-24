@@ -1,4 +1,5 @@
 import config from '../config/config.js';
+import prota from '../prota.js';
 
 export default class TitleScene extends Phaser.Scene
 {
@@ -7,6 +8,7 @@ export default class TitleScene extends Phaser.Scene
   }
 
   preload() {
+    // this.load.spritesheet('meatboy', 'assets/PNG_Final_Todos_Los_Sprites_2.png',108,100);
   }
 
   create() {

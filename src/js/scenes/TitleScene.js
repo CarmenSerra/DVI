@@ -1,5 +1,6 @@
 import config from '../config/config.js';
 import prota from '../prota.js';
+import Button from '../components/Button.js';
 
 export default class TitleScene extends Phaser.Scene
 {
@@ -12,46 +13,41 @@ export default class TitleScene extends Phaser.Scene
   }
 
   create() {
-    // Game
-    this.gameButton = this.add.sprite(250, 125, 'button').setInteractive();
-    this.centerButton(this.gameButton, 1);
-
-    this.gameText = this.add.text(0, 0, 'Play!', {
-      fontFamily: 'IsWasted',
-      fontSize: '32px',
-      fill: '#fff'
+    // Play button
+    this.playButton = new Button({
+      current: this,
+      x: this.cameras.main.centerX,
+      y: this.cameras.main.centerY - 50,
+      image: 'button',
+      alt: 'button_hover',
+      text: 'Play!'
     });
-    this.centerButtonText(this.gameText, this.gameButton);
 
-    this.gameButton.on('pointerdown', (pointer) => this.scene.start('Game'));
+    this.playButton.on('pointerdown', (pointer) => this.scene.start('Game'));
 
-    // Options
-    this.optionsButton = this.add.sprite(250, 125, 'button').setInteractive();
-    this.centerButton(this.optionsButton);
-
-    this.optionsText = this.add.text(0, 0, 'Options', {
-      fontFamily: 'IsWasted',
-      fontSize: '32px',
-      fill: '#fff'
+    // Options button
+    this.optionsButton = new Button({
+      current: this,
+      x: this.cameras.main.centerX,
+      y: this.cameras.main.centerY + 50,
+      image: 'button',
+      alt: 'button_hover',
+      text: 'Options'
     });
-    this.centerButtonText(this.optionsText, this.optionsButton);
 
     this.optionsButton.on('pointerdown', (pointer) => this.scene.start('Options'));
 
-    // Credits
-    this.creditsButton = this.add.sprite(250, 125, 'button').setInteractive();
-    this.centerButton(this.creditsButton, -1);
-
-    this.creditsText = this.add.text(0, 0, 'Credits', { fontFamily: 'IsWasted', fontSize: '32px', fill: '#fff' });
-
-    this.centerButtonText(this.creditsText, this.creditsButton);
+    // Credits button
+    this.creditsButton = new Button({
+      current: this,
+      x: this.cameras.main.centerX,
+      y: this.cameras.main.centerY + 150,
+      image: 'button',
+      alt: 'button_hover',
+      text: 'Credits'
+    });
 
     this.creditsButton.on('pointerdown', (pointer) => this.scene.start('Credits'));
-
-    // Input events
-    this.input.on('pointerover', (event, gameObjects) => gameObjects[0].setTexture('button_hover'));
-
-    this.input.on('pointerout', (event, gameObjects) => gameObjects[0].setTexture('button'));
 
     this.model = this.sys.game.globals.model;
 
@@ -61,16 +57,5 @@ export default class TitleScene extends Phaser.Scene
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-    );
-  }
-
-  centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(gameText, gameButton);
   }
 };

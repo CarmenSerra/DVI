@@ -18,7 +18,7 @@ export default class GameScene extends Phaser.Scene
   create() {
     
    //var sprite = this.add.spritesheet(450,200,'protagonista2');
-    this.background  = this.add.image(450,200,'bg');
+    this.background  = this.add.image(750,250,'bg');
   
 
     this.scene.anims.create({ // Carlos
@@ -29,29 +29,7 @@ export default class GameScene extends Phaser.Scene
     });
 
     sprite.play(standing_sprite);
-        //prota = new Prota();
-    //this.add.image(400, 300, 'logo2');
-    /*this.prueba_protagonista = new Protagonist({
-      current : this,
-      x: this.cameras.main.centerX,
-      y: this.cameras.main.centerY,
-     // image: 'protagonista'
-    });
 
-    
-    //this.prueba_protagonista = this.add.sprite(config.width / 2 - 50, config.height / 2, 'protagonista2');
-  
-    this.anims.create({
-      key:'prueba_animacion',
-      frames: this.anims.generateFrameNumbers('protagonista2'),
-      frameRate: 10,
-      repeat: -1
-    });
-
-    var sprite = this.add.sprite(50, 300, 'protagonista2').setScale(4);
-    sprite.play('prueba_animacion');
-    sprite.anims.setRepeat(7);
-    */
   }
 
   update(time, delta) {

@@ -17,8 +17,8 @@ export default class GameScene extends Phaser.Scene
 
   create() {
     
-    var sprite = this.add.spritesheet(450,200,'protagonista2');
-    //this.background  = this.add.image(450,200,'bg');
+   //var sprite = this.add.spritesheet(450,200,'protagonista2');
+    this.background  = this.add.image(450,200,'bg');
   
 
     this.scene.anims.create({ // Carlos

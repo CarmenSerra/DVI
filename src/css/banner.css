@@ -4,7 +4,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../../assets/images/possible_background_1.png");
+  background-image: url("../../assets/images/BK1_postapocalypse4.png");
 }
 
 .indice_sombra {
@@ -20,7 +20,7 @@
   width: 80%;
   text-align: center;
   background-color: rgba(0,0,0,0.6);
-  color: white;
+  color:#C63C3C;
   margin: auto;
 }
 
@@ -42,12 +42,13 @@
 .indice_cont_banner_link {
   margin: 15px;
   position: relative;
+ 
 }
 
 .indice_cont_banner_link a {
   position: relative;
   display: inline-block;
-  color: #fff;
+  color:#C63C3C;
   text-decoration: none;
   border:1px solid #fff;
   padding:  1px;
@@ -59,6 +60,39 @@
   background-color: #fff;
   color: black;
 }
+
+
+.indice_footer {
+  position: relative;
+}
+
+.col-1 h1{
+  position: relative;
+}
+
+.col-2 h1{
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* De momento en desuso */
 .indice_banner_link {

@@ -20,13 +20,13 @@ body {
 
 
 .indice_contenedor_seccion_descrp {
-  padding: 10%;
+  padding: 1%;
 }
 
 .indice_contenedor_seccion_boton {
-  padding: 5%;
+  padding: 1%;
 }
 
 .indice_contenedor_seccion_boton a {
-  width: 200px;
+  width: 0px;
 }

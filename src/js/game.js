@@ -63,7 +63,7 @@ export default class Game extends Phaser.Scene
     /* FONDO */
     //addBackground(scene){}
 
-    /* SUELO */
+    /* SUELO 
     addGround(scene, map) {
       //Necesitamos un tileset para esto
       let tileset = map.addTilesetImage('tilebackground', 'tiles', 64, 64);
@@ -74,36 +74,36 @@ export default class Game extends Phaser.Scene
       scene.physics.world.bounds.height = ground.height;
 
       return ground;
-    }
+    }*/
 
-    /*CAMARA*/
+    /*CAMARA
     addCamera(scene, player, ground) {
       //Para que no se salga del mapa
       scene.cameras.main.setBounds(0, 0, ground.widht, ground.height);
       scene.cameras.main.startFollow(player);
-    }
+    }*/
 
-    /*SONIDOS PROTAGONISTA*/
+    /*SONIDOS PROTAGONISTA
     audio_comiendo() {
       let comer = this.sound.add("prueba_comer", {
         volume:0.50,
       });
 
       comer.play();
-    }
+    }*/
 
-    /*SONIDOS ENEMIGOS*/
+    /*SONIDOS ENEMIGOS
     audio_comiendo() {
       let zombie = this.sound.add("prueba_zombie", {
         volume:0.50,
       });
 
       zombie.play();
-    }
+    }*/
 
     /*SPAWNS*/
 
-    /*PROTAGONISTA*/
+    /*PROTAGONISTA
     spawnPlayer(scene, x, y, ground) {
       let albon = new prota(scene, 0, 100);
 
@@ -111,16 +111,16 @@ export default class Game extends Phaser.Scene
       albon.createAnims();
 
       return albon;
-    }
+    }*/
 
-    /*ENEMIGOS*/
+    /*ENEMIGOS
     spawnEnemigo_Runner(scene, x, y, enemies) {
       let enemigo_runn = new enemigo_runner(scene, 0, 200);
 
       //Animaciones en clase aparte enemigo_runner.js
       enemigo_runn.createAnims();
       //enemies.add(enemigo_runn);
-    }
+    }*/
   }
 
   update(time, delta) {

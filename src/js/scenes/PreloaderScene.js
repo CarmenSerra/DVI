@@ -14,14 +14,17 @@ export default class PreloaderScene extends Phaser.Scene
     let width = this.cameras.main.width;
     let height = this.cameras.main.height;
 
-    this.add.image(width / 2, height / 2 - 200, 'logo');
+    this.add.image(width / 2, height / 2 - 150, 'imagen-inicio');
 
     // Display progress bar
     let progressBar = this.add.graphics();
     let progressBox = this.add.graphics();
 
+
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
+
+    
 
     let loadingText = this.make.text({
       x: width / 2,
@@ -88,6 +91,7 @@ export default class PreloaderScene extends Phaser.Scene
     this.load.image('button', 'assets/images/test_button.png');
     this.load.image('button_hover', 'assets/images/test_button_hover.png');
     this.load.audio('myst', 'assets/musica/myst-on-the-moor.mp3');
+    //CSA Aqui tengo que cargar el sprite del prota para recogerlo cuando cree el cointainer
     // Maybe move before game executes (play scene)
   }
 

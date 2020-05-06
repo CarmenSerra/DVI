@@ -1,4 +1,5 @@
 import Button from '../components/Button.js';
+import Text from '../components/Text.js';
 
 export default class OptionsScene extends Phaser.Scene
 {
@@ -12,23 +13,21 @@ export default class OptionsScene extends Phaser.Scene
   create() {
     this.model = this.sys.game.globals.model;
 
-    // Options Title
-    this.text = this.add.text(this.cameras.main.centerX, 100, 'Options', {
-      fontFamily: 'TooMuchInk',
-      fontSize: 60,
-      fill: '#fff'
-    });
+    // Options title
+    this.text = new Text(this, 0, 0, 'Options', 'title');
 
-    this.text.setOrigin(0.5, 0.5);
+    this.text.setPosition(this.cameras.main.centerX - this.text.width / 2, 100);
 
-    // Music Button
+    // Music
+    this.musicText = new Text(this, 0, 0, 'Music: ' + this.musicState(), 'button');
+
     this.musicButton = new Button({
       current: this,
       x: this.cameras.main.centerX,
       y: this.cameras.main.centerY - 100,
       image: 'button',
       alt: 'button_hover',
-      text: 'Music: ' + this.musicState()
+      text: this.musicText
     });
 
     this.musicButton.on('pointerdown', () => {
@@ -36,14 +35,16 @@ export default class OptionsScene extends Phaser.Scene
       this.updateAudio();
     });
 
-    // Sound Button
+    // Sound
+    this.soundText = new Text(this, 0, 0, 'Sound: ' + this.soundState(), 'button');
+
     this.soundButton = new Button({
       current: this,
       x: this.cameras.main.centerX,
       y: this.cameras.main.centerY,
       image: 'button',
       alt: 'button_hover',
-      text: 'Sound: ' + this.soundState()
+      text: this.soundText
     });
 
     this.soundButton.on('pointerdown', () => {
@@ -58,7 +59,7 @@ export default class OptionsScene extends Phaser.Scene
       y: this.cameras.main.centerY + 150,
       image: 'button',
       alt: 'button_hover',
-      text: 'Go Back',
+      text: new Text(this, 0, 0, 'Go Back', 'button'),
       target: 'Title'
     });
   }

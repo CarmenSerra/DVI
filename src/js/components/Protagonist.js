@@ -17,38 +17,47 @@ export default class Protagonist extends Phaser.GameObjects.Container
    * @return {Protagonist}
    */
   constructor(character) {
-    super(character.current);
+    super(character.current, character.x, character.y);
 
-    this.currentScene = character.current;
+    this.currentScene= character.current;
     this.x = character.x;
     this.y = character.y;
 
 
-   
-      this.scene.add.existing(spriteInterno)
-      this.add(spriteInterno)
-
-    this.Protagonist = this.currentScene.add.sprite(50, 650, character.image);
-    this.scene.add.existing(this.Protagonist);
-    this.add(this.Protagonist);
-    //this.text = this.currentScene.add.text(0, 0, character.text, { fontSize: '32px', fill: '#fff' });
-    Phaser.Display.Align.In.Center(this.Protagonist); //Igua no me hace falta 
-
+    const spriteInterno = this.currentScene.add.sprite(0, 0, 'protagonista_andando'); //El 0,0 es del container 
+    //const spriteInterno = this.currentScene.physics.add.sprite(0, 0, 'protagonista_andando');
+    this.scene.add.existing(spriteInterno);
+    this.add(spriteInterno);
     
-    //this.add(this.text);
 
-    this.setSize(this.Protagonist.width, this.Protagonist.height); 
+    //this.Protagonist = this.currentScene.add.sprite(50, 650, character.image);
+    //Phaser.Display.Align.In.Center(this); 
 
-    //this.setInteractive();
+    this.add(this);
+    
+    //this.setSize(this.Protagonist.width, this.Protagonist.height); 
 
-  /*  if (character.target) {
-      this.on('pointerdown', () => this.currentScene.scene.start(character.target));
-    }
+   
 
-    this.on('pointerover', () => this.Protagonist.setTexture(character.alt));
+    this.currentScene.add.existing(this);
 
-    this.on('pointerout', () => this.Protagonist.setTexture(character.image));
+    //Para la animación
 
-    this.currentScene.add.existing(this);*/
+    /*create(){
+      
+    this.scene.anims.create({ // Carlos
+      key: 'standing_sprite',
+      frames: this.scene.anims.generateFrameNumbers('protagonista2', { start: 0, end: 3 }),
+      frameRate: 2,
+      repeat: -1
+    });
+    }*/
+
+
   }
+
+
+  
+
+   
 }

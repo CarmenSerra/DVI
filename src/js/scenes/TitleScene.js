@@ -1,5 +1,5 @@
 import config from '../config/config.js';
-import prota from '../prota.js';
+import prota from '../antiguo/prota.js';
 import Button from '../components/Button.js';
 import Text from '../components/Text.js';
 

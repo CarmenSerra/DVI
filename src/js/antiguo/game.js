@@ -1,6 +1,3 @@
-import enemigo_runner from './enemigo_runner.js';
-import prota from './prota.js';
-import background from '.background.js';
 
 
 export default class Game extends Phaser.Scene
@@ -123,6 +120,6 @@ export default class Game extends Phaser.Scene
     }*/
   }
 
-  update(time, delta) {
+  update() {
   }
 }

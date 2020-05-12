@@ -36,7 +36,8 @@ export default class PreloaderScene extends Phaser.Scene
     this.load.image('protagonista', 'assets/images/Alb_prota_dcha_1_conbrazo.png');
     //Supongo que lo podemos cargar en el Preloader
     this.load.spritesheet('protagonista2', 'assets/images/PNG_Prota_Andando.png', { frameWidth: 130, frameHeight: 200});
-    // this.load.image('bg', 'assets/images/War.png');  //Supongo que lo podemos cargar en el Preloader
+ 
+    /*
     this.load.image('war1_sky', 'assets/images/backgrounds/War1/Bright/sky.png');
     this.load.image('war1_sun', 'assets/images/backgrounds/War1/Bright/sun.png');
     this.load.image('war1_ruins', 'assets/images/backgrounds/War1/Bright/ruins.png');
@@ -44,7 +45,11 @@ export default class PreloaderScene extends Phaser.Scene
     this.load.image('war1_house2', 'assets/images/backgrounds/War1/Bright/houses2.png');
     this.load.image('war1_house1', 'assets/images/backgrounds/War1/Bright/houses1.png');
     this.load.image('war1_fence', 'assets/images/backgrounds/War1/Bright/fence.png');
-    this.load.image('war1_road', 'assets/images/backgrounds/War1/Bright/road.png');
+    this.load.image('war1_road', 'assets/images/backgrounds/War1/Bright/road.png');*/
+    this.load.image('bg', 'assets/images/sky.png');
+    this.load.image('capa1', 'assets/images/ruins.png');
+    this.load.image('capa2', 'assets/images/houses2.png');
+	
   }
 
   ready() {

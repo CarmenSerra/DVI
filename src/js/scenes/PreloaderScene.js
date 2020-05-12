@@ -1,4 +1,4 @@
-//import 'phaser';
+import LoadingBar from '../components/LoadingBar.js';
 
 export default class PreloaderScene extends Phaser.Scene
 {
@@ -11,96 +11,47 @@ export default class PreloaderScene extends Phaser.Scene
   }
 
   preload() {
-    let width = this.cameras.main.width;
-    let height = this.cameras.main.height;
+    let width = this.cameras.main.centerX;
+    let height = this.cameras.main.centerY;
 
-    this.add.image(width / 2, height / 2 - 150, 'imagen-inicio');
+    this.add.image(width, height - 250, 'imagen-inicio');
 
     // Display progress bar
-    let progressBar = this.add.graphics();
-    let progressBox = this.add.graphics();
-
-
-    progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
-
-    
-
-    let loadingText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 50,
-      text: 'Loading...',
-      style: {
-        font: '20px monospace',
-        fill: '#ffffff'
-      }
-    });
-
-    loadingText.setOrigin(0.5, 0.5);
-
-    let percentText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 5,
-      text: '0%',
-      style: {
-        font: '18px monospace',
-        fill: '#ffffff'
-      }
-    });
-
-    percentText.setOrigin(0.5, 0.5);
-
-    let assetText = this.make.text({
-      x: width / 2,
-      y: width / 2 + 50,
-      text: '',
-      style: {
-        font: '18px monospace',
-        fill: '#ffffff'
-      }
-    });
-
-    assetText.setOrigin(0.5, 0.5);
+    this.loadingBar = new LoadingBar(this, this.cameras.main.centerX, this.cameras.main.centerY, 320, 50);
 
     // Update progress bar
-    this.load.on('progress', (value) => {
-      percentText.setText(parseInt(value * 100) + '%');
-      progressBar.clear();
-      progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
-    });
+    this.load.on('progress', (value) => this.loadingBar.updateBar(value));
 
     // Update file progress text
-    this.load.on('fileprogress', (file) => {
-      assetText.setText('Loading asset: ' + file.key);
-    });
+    this.load.on('fileprogress', (file) => this.loadingBar.updateText(file.key));
 
     this.load.on('complete', () => {
-      progressBar.destroy();
-      progressBox.destroy();
-      loadingText.destroy();
-      percentText.destroy();
-      assetText.destroy();
+      this.loadingBar.destroy();
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(800, this.ready, [], this);
 
-    // Here we load images for main screen game (title and buttons)
-    this.load.image('logo', 'assets/images/possible_background_1.png');
-    this.load.image('button', 'assets/images/test_button.png');
-    this.load.image('button_hover', 'assets/images/test_button_hover.png');
-    this.load.audio('myst', 'assets/musica/myst-on-the-moor.mp3');
-    //CSA Aqui tengo que cargar el sprite del prota para recogerlo cuando cree el cointainer
-    // Maybe move before game executes (play scene)
+    // Game assets load
+    this.load.image('protagonista', 'assets/images/Alb_prota_dcha_1_conbrazo.png');
+    //Supongo que lo podemos cargar en el Preloader
+    this.load.spritesheet('protagonista2', 'assets/images/PNG_Prota_Andando.png', { frameWidth: 130, frameHeight: 200});
+    // this.load.image('bg', 'assets/images/War.png');  //Supongo que lo podemos cargar en el Preloader
+    this.load.image('war1_sky', 'assets/images/backgrounds/War1/Bright/sky.png');
+    this.load.image('war1_sun', 'assets/images/backgrounds/War1/Bright/sun.png');
+    this.load.image('war1_ruins', 'assets/images/backgrounds/War1/Bright/ruins.png');
+    this.load.image('war1_house3', 'assets/images/backgrounds/War1/Bright/house3.png');
+    this.load.image('war1_house2', 'assets/images/backgrounds/War1/Bright/houses2.png');
+    this.load.image('war1_house1', 'assets/images/backgrounds/War1/Bright/houses1.png');
+    this.load.image('war1_fence', 'assets/images/backgrounds/War1/Bright/fence.png');
+    this.load.image('war1_road', 'assets/images/backgrounds/War1/Bright/road.png');
   }
 
   ready() {
-    //this.scene.start('Options');
     this.readyCount++;
 
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('Game');
     }
   }
 };

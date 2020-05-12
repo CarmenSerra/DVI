@@ -1,4 +1,4 @@
-import config from '../config/config.js';
+import Text from '../components/Text.js';
 
 export default class CreditsScene extends Phaser.Scene
 {
@@ -7,90 +7,58 @@ export default class CreditsScene extends Phaser.Scene
   }
 
   create() {
-    let authors = [
-      {
-        name: 'Carmen Serrano Avilés',
-        position: -350,
-        duration: 8000,
-        delay: 2000,
-        offset: 1100
-      },
-      {
-        name: 'Héctor Hugo Coronado Huamán',
-        position: -400,
-        duration: 8500,
-        delay: 2000,
-        offset: 1250
-      }
+    const authors = [
+      'Carmen Serrano Avilés',
+      'Héctor Hugo Coronado Huamán',
     ];
 
-    let textSize = '32px';
-    let colorText = '#fff';
+    // Credits title
+    this.creditsTitle = new Text(this, 0, 0, 'Credits', 'title');
 
-    this.creditsText = this.add.text(0, 0, 'Credits', {
-      fontFamily: 'TooMuchInk',
-      fontSize: '60px',
-      fill: colorText
-    });
-
-    this.madeByText = this.add.text(0, 0, 'Created By', {
-      fontFamily: 'TooMuchInk',
-      fontSize: '44px',
-      fill: colorText
-    });
-
-    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
-
-    Phaser.Display.Align.In.Center(this.creditsText, this.zone);
-
-    Phaser.Display.Align.In.Center(this.madeByText, this.zone);
-
-    this.madeByText.setY(1000);
+    this.creditsTitle.setPosition(this.cameras.main.centerX - this.creditsTitle.width / 2, this.cameras.main.centerY);
 
     this.creditsTweens = this.tweens.add({
-      targets: this.creditsText,
-      y: -100,
-      ease: 'Power1',
+      targets: this.creditsTitle,
+      y: -200,
+      ease: 'Power2',
       duration: 3000,
       delay: 1000,
       onComplete: () => {
-        this.destroy
+        this.creditsTitle.destroy
       }
     });
+
+    // Made by text
+    this.madeByText = new Text(this, 0, 0, 'Created By', 'subtitle');
+
+    this.madeByText.setPosition(this.cameras.main.centerX - this.madeByText.width / 2, 1000);
 
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
       y: -300,
-      ease: 'Power1',
-      duration: 8000,
-      delay: 1000,
+      ease: 'Power0',
+      duration: 4000,
+      delay: 1100,
       onComplete: () => {
         this.madeByTween.destroy;
-        this.scene.start('Title');
       }
     });
 
-    let authorsText = authors.map((author) => {
-      let authorText = this.add.text(0, 0, author.name, {
-        fontFamily: 'TooMuchInk',
-        fontSize: textSize,
-        fill: colorText
-      });
+    // Authors
+    this.authorsText = new Text(this, 0, 0, authors.join('\n'), 'credits');
 
-      Phaser.Display.Align.In.Center(authorText, this.zone);
+    this.authorsText.setPosition(this.cameras.main.centerX - this.authorsText.width / 2, 1010);
 
-      authorText.setY(author.offset);
-
-      this.tweens.add({
-        targets: authorText,
-        y: author.position,
-        ease: 'Power1',
-        duration: author.duration,
-        delay: author.delay,
-        onComplete: () => authorText.destroy
-      });
-
-      return authorText;
+    this.authorsTween = this.tweens.add({
+      targets: this.authorsText,
+      y: -320,
+      ease: 'Power0',
+      duration: 4500,
+      delay: 1200,
+      onComplete: () => {
+        this.authorsText.destroy;
+        this.scene.start('Title');
+      }
     });
   }
 };

@@ -24,6 +24,7 @@ export default class GameScene extends Phaser.Scene
       key: 'right',
       frames:  this.anims.generateFrameNumbers('protagonista_andando', { start: 0, end: 2 }),
       frameRate: 30,
+
       repeat: -1
   });
 
@@ -73,6 +74,7 @@ this.map = this.make.tilemap({
 });
 
 this.tileset1 = this.map.addTilesetImage('road', 'tilesetroad');
+
 
 /*Añadir capas*/
 this.backgroundLayer = this.map.createStaticLayer('suelo', this.tileset1);
@@ -145,6 +147,7 @@ this.physics.add.existing(this);
     this.backg.tilePositionX = this.myCam.scrollX * .2;
     this.ruins.tilePositionX = this.myCam.scrollX * .3;
     this.houses2.tilePositionX = this.myCam.scrollX * .4;
+
 
   }
 };

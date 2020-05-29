@@ -15,56 +15,71 @@ export default class TitleScene extends Phaser.Scene
     this.load.image('button_hover', 'assets/images/test_button_hover.png');
     this.load.image('imagen-inicio', 'assets/images/Alb_prota_dcha_1_conbrazo.png');
     this.load.audio('myst', 'assets/musica/myst-on-the-moor.mp3');
+    this.load.image('background', 'assets/images/backgrounds/War1/Bright/War.png');
   }
 
   create() {
-    // Play button
-    this.playButton = new Button({
-      current: this,
-      x: this.cameras.main.centerX,
-      y: this.cameras.main.centerY - 50,
-      image: 'button',
-      alt: 'button_hover',
-      text: new Text(this, 0, 0, 'Play!', 'button')
-    });
+    let centerX = this.cameras.main.centerX;
+    let centerY = this.cameras.main.centerY;
 
-    this.playButton.on('pointerdown', (pointer) => this.scene.start('Preloader'));
+    this.add.image(centerX, centerY, 'background').setAlpha(0.45);
+
+    this.gameTitle = new Text(this, centerX, centerY - 200, 'MEATBALLYPSE', 'game_title');
+
+    // Play button
+    this.playText = new Text(this, 0, 0, 'Play!', 'button');
+    this.playButton = new Button(this, centerX, centerY - 50, 'button', 'button_hover', 'Preloader');
+    this.playButton.add(this.playText);
 
     // Controls Button
-    this.controlsButton = new Button({
-      current: this,
-      x: this.cameras.main.centerX,
-      y: this.cameras.main.centerY + 35,
-      image: 'button',
-      alt: 'button_hover',
-      text: new Text(this, 0, 0, 'Controls', 'button'),
-      target: 'Controls'
-    })
+    this.controlsText = new Text(this, 0, 0,'Controls', 'button');
+    this.controlsButton = new Button(this, centerX, centerY + 50, 'button', 'button_hover');
+    this.controlsButton.add(this.controlsText);
+    this.controlsButton.on('pointerdown', () => {
+      this.scene.launch('Controls', { previousScene: 'Title' });
+      this.scene.sleep();
+    });
 
     // Options button
-    this.optionsButton = new Button({
-      current: this,
-      x: this.cameras.main.centerX,
-      y: this.cameras.main.centerY + 120,
-      image: 'button',
-      alt: 'button_hover',
-      text: new Text(this, 0, 0, 'Options', 'button'),
-      target: 'Options'
+    this.optionsText = new Text(this, 0, 0, 'Options', 'button');
+    this.optionsButton = new Button(this, centerX, centerY + 150, 'button', 'button_hover');
+    this.optionsButton.add(this.optionsText);
+    this.optionsButton.on('pointerdown', () => {
+      this.scene.launch('Options', { previousScene: 'Title' });
+      this.scene.sleep();
     });
-
-    // this.optionsButton.on('pointerdown', (pointer) => this.scene.start('Options'));
 
     // Credits button
-    this.creditsButton = new Button({
-      current: this,
-      x: this.cameras.main.centerX,
-      y: this.cameras.main.centerY + 205,
-      image: 'button',
-      alt: 'button_hover',
-      text: new Text(this, 0, 0, 'Credits', 'button')
+    this.creditsText = new Text(this, 0, 0, 'Credits', 'button');
+    this.creditsButton = new Button(this, centerX, centerY + 250, 'button', 'button_hover');
+    this.creditsButton.add(this.creditsText);
+    this.creditsButton.on('pointerdown', () => {
+      this.scene.launch('Credits', { previousScene: 'Title' });
+      this.scene.sleep();
     });
 
-    this.creditsButton.on('pointerdown', (pointer) => this.scene.start('Credits'));
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    // Mover a game
+    /*this.pause = this.input.keyboard.addKey('P');
+    this.pause.on('down', () => {
+      console.log('Pressed!');
+      this.cameras.main.setAlpha(0.5);
+      this.scene.launch('Pause', { previousScene: 'Title' });
+      this.scene.pause();
+    });
+
+    this.pause = this.input.keyboard.addKey('K');
+    this.pause.on('down', () => {
+      console.log('Pressed!');
+      this.scene.start('GameOver');
+    });
+
+    this.pause = this.input.keyboard.addKey('L');
+    this.pause.on('down', () => {
+      console.log('Pressed!');
+      this.scene.start('LevelCompleted');
+    });*/
 
     this.model = this.sys.game.globals.model;
 
@@ -73,6 +88,14 @@ export default class TitleScene extends Phaser.Scene
       this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
+    }
+  }
+
+  update(time, delta) {
+    if (this.cursors.up.isDown) {
+      // desplazar foco arriba
+    } else if (this.cursors.down.isDown) {
+      // desplazar foco abajo
     }
   }
 };

@@ -6,16 +6,21 @@ export default class CreditsScene extends Phaser.Scene
     super('Credits');
   }
 
+  init(data) {
+    this.previousScene = data.previousScene;
+  }
+
   create() {
     const authors = [
       'Carmen Serrano Avilés',
       'Héctor Hugo Coronado Huamán',
     ];
 
-    // Credits title
-    this.creditsTitle = new Text(this, 0, 0, 'Credits', 'title');
+    let centerX = this.cameras.main.centerX;
+    let centerY = this.cameras.main.centerY;
 
-    this.creditsTitle.setPosition(this.cameras.main.centerX - this.creditsTitle.width / 2, this.cameras.main.centerY);
+    // Credits title
+    this.creditsTitle = new Text(this, centerX, centerY, 'Credits', 'title');
 
     this.creditsTweens = this.tweens.add({
       targets: this.creditsTitle,
@@ -29,9 +34,7 @@ export default class CreditsScene extends Phaser.Scene
     });
 
     // Made by text
-    this.madeByText = new Text(this, 0, 0, 'Created By', 'subtitle');
-
-    this.madeByText.setPosition(this.cameras.main.centerX - this.madeByText.width / 2, 1000);
+    this.madeByText = new Text(this, centerX, 1000, 'Created By', 'subtitle');
 
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
@@ -45,9 +48,7 @@ export default class CreditsScene extends Phaser.Scene
     });
 
     // Authors
-    this.authorsText = new Text(this, 0, 0, authors.join('\n'), 'credits');
-
-    this.authorsText.setPosition(this.cameras.main.centerX - this.authorsText.width / 2, 1010);
+    this.authorsText = new Text(this, centerX, 1010, authors.join('\n'), 'credits');
 
     this.authorsTween = this.tweens.add({
       targets: this.authorsText,
@@ -57,7 +58,7 @@ export default class CreditsScene extends Phaser.Scene
       delay: 1200,
       onComplete: () => {
         this.authorsText.destroy;
-        this.scene.start('Title');
+        this.scene.start(this.previousScene);
       }
     });
   }

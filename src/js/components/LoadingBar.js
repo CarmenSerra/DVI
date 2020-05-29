@@ -19,17 +19,14 @@ export default class LoadingBar extends Phaser.GameObjects.Container
 
     // Add loading title
     this.loadingText = new Text(scene, this.x, this.y - 50, 'Loading...', 'load_title');
-    this.loadingText.setPosition(this.x - this.loadingText.width / 2, this.y - this.loadingText.height / 2 - 50);
     scene.make.text(this.loadingText);
 
     // Add percentage in bar
-    this.percentText = new Text(scene, 0, 0, '0%', 'load_text');
-    this.percentText.setPosition(this.x - this.percentText.width / 2, this.y - this.percentText.height / 2);
+    this.percentText = new Text(scene, this.x, this.y, '0%', 'load_text');
     scene.make.text(this.percentText);
 
     // Add assets load text
-    this.assetText = new Text(scene, 0, 0, 'Loading asset: ', 'load_text');
-    this.assetText.setPosition(this.x - this.assetText.width / 2, this.y - this.assetText.height / 2 + 50);
+    this.assetText = new Text(scene, this.x, this.y + 50, 'Loading asset: ', 'load_text');
     scene.make.text(this.assetText);
 
     scene.add.existing(this);

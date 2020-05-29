@@ -5,45 +5,30 @@ export default class Button extends Phaser.GameObjects.Container
 {
   /**
    * Constructs Button object
-   *
-   * @param  {object} options Button options
-   *         current: the current scene where button is placed
-   *         x: x position of the button
-   *         y: y position of the button
-   *         image: default showed image on button
-   *         alt: alternative showed image on button
-   *         text: displayed text in button
-   *         target: target scene when button is pressed
-   * @return {Button}
+   * @param  {Phase.Scene} scene Game scene where button is added
+   * @param  {number} x     X position
+   * @param  {number} y     Y position
+   * @param  {string} image  image displayed on button
+   * @param  {string} alt  alt image displayed on pointer over button
+   * @param  {string} target scene to start on pointer down
    */
-  constructor(options) {
-    super(options.current);
+  constructor(scene, x, y, image, alt, target) {
+    let button = scene.add.sprite(0, 0, image);
 
-    this.currentScene = options.current;
-    this.x = options.x;
-    this.y = options.y;
+    super(scene, x, y, button);
 
-    this.button = this.currentScene.add.sprite(0, 0, options.image);
-
-    this.text = options.text;
-
-    Phaser.Display.Align.In.Center(this.text, this.button);
-
-    this.add(this.button);
-    this.add(this.text);
-
-    this.setSize(this.button.width, this.button.height);
+    this.setSize(button.width, button.height);
 
     this.setInteractive();
 
-    if (options.target) {
-      this.on('pointerdown', () => this.currentScene.scene.start(options.target));
+    if (target) {
+      this.on('pointerdown', () => scene.scene.start(target));
     }
 
-    this.on('pointerover', () => this.button.setTexture(options.alt));
+    this.on('pointerover', () => button.setTexture(alt));
 
-    this.on('pointerout', () => this.button.setTexture(options.image));
+    this.on('pointerout', () => button.setTexture(image));
 
-    this.currentScene.add.existing(this);
+    scene.add.existing(this);
   }
 }

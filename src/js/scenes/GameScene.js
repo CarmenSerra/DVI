@@ -65,8 +65,7 @@ this.houses2 = this.add.tileSprite(0, 0, this.sys.game.config.width, this.sys.ga
 this.houses2.setOrigin(0, 0);
 this.houses2.setScrollFactor(0);
 
-//Aquí debería añadir el road.
-
+/*Creo el mapa*/
 this.map = this.make.tilemap({ 
   key: 'mapa', 
   tileWidth: 89, 
@@ -81,14 +80,15 @@ this.backgroundLayer = this.map.createStaticLayer('suelo', this.tileset1);
 
 /*Añadiendo prota y camaras*/
 
-
+this.sprite =  this.add.sprite(0, 0, 'protagonista_andando'); //El 0,0 es del container 
 this.prota  =  new Protagonist({
   current: this,
   x: this.cameras.main.centerX,
-  y: this.cameras.main.centerY
+  y: this.cameras.main.centerY,
+  sprite: this.sprite
 });
 
-this.physics.add.existing(this);
+//this.physics.add.existing(this);
 
    //this.prota= this.physics.add.sprite(200, window.innerHeight - 150, 'protagonista_andando');
    //this.prota.setBounce(0.15);

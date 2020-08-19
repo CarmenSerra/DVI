@@ -4,7 +4,7 @@ En este repositorio se encuentra el código y el acceso al proyecto de la asigna
 En el archivo GDD incluimos información más detalla del mismo.
 
 # Gestión del proyecto
-Llevamos la gestión del proyecto mediante la aplicación de Trello, adjuntamos el enlace a continuación. 
+Llevo la gestión del proyecto mediante la aplicación de Trello, adjunto el enlace a continuación. 
 https://trello.com/b/7HdMYKfu/dvi
 
 # Enlace a juego
@@ -14,6 +14,5 @@ https://carmenserra.github.io/DVI/
 
 
 
-# Autores:
+# Autora:
 Carmen Serrano Avilés
-Héctor Hugo Coronado Huamán 

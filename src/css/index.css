@@ -1,0 +1,60 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    font-size: 500%;
+    color: #003EC0;
+    text-align: center;
+	 
+}
+
+h2 {
+	font-size: 200%;
+    
+}
+
+p,
+a {
+	font-size: 220%;
+    
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #77A3FF;
+}
+
+li {
+	font-size: 90%;
+    float: right;
+    font-family: font2;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: white;
+}
+
+
+#mains{
+    margin-top: 0.5rem;
+}
+
+.div {
+    background-color: #6699ff;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    text-align: center;
+}

@@ -14,17 +14,17 @@ var config = {
     width: 1472, //800
     height: 736, // 600
     pixelArt: true,
-    //parent: 'mains',
+    parent: 'mains',
     /*input: {
         gamepad: true
     },
     audio: {
         disableWebAudio: false
     },*/
-    /*scale: {
+    scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
-    },*/
+    },
     //scene: [Game, Help, Level1, Level2, Level3, Level4, GameOver, GameWin, PausedGame],
     //physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
     scene: [Game],

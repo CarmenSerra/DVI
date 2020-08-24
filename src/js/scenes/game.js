@@ -1,4 +1,4 @@
-import archer from './../archer.js'
+import Archer from './../archer.js'
 //Los demas aqui tambien
 
 export default class Game extends Phaser.Scene {
@@ -26,7 +26,14 @@ export default class Game extends Phaser.Scene {
 
     create() {
         this.add.image(400, 300, 'back_ejemplo');
-
+        this.archer = this.spawnPlayer(this,0,919,this.groundLayer);
     }
+
+    spawnPlayer(scene, x, y, groundLayer) {
+        let archer = new Archer(scene, x, y);
+        archer.createAnims(); //crear las animaciones del archer
+        return archer;
+    }
+   
 
 }

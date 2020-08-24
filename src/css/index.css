@@ -1,23 +1,23 @@
 body {
-    background-color: lightblue;
+    background-color:  black;
 }
 
 h1 {
     font-size: 500%;
-    color: #003EC0;
+    color: #E26B6B;
     text-align: center;
-	 
+	font-family: font1;
 }
 
 h2 {
 	font-size: 200%;
-    
+    font-family: font1;
 }
 
 p,
 a {
 	font-size: 220%;
-    
+    font-family: font2;
 }
 
 ul {
@@ -25,7 +25,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #77A3FF;
+    background-color: #DE2E2E;
 }
 
 li {
@@ -52,9 +52,17 @@ li a:hover {
 }
 
 .div {
-    background-color: #6699ff;
+    background-color:  #308C46;
     margin: 1rem;
     padding: 1rem;
     border: 2px solid #ccc;
     text-align: center;
+}
+
+.div2{
+    background-color:  #308C46;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    text-align: absolute;
 }

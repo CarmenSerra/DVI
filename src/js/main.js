@@ -1,4 +1,5 @@
 import Game from './scenes/game.js'
+import Level1 from './scenes/level1.js'
 /*
 import Help from './help.js'
 import Level1 from './level1.js'
@@ -27,7 +28,7 @@ var config = {
     },
     //scene: [Game, Help, Level1, Level2, Level3, Level4, GameOver, GameWin, PausedGame],
     //physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
-    scene: [Game],
+    scene: [Game,Level1],
     physics: {
         default: 'arcade',
         arcade: {

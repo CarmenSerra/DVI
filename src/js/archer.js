@@ -5,7 +5,7 @@ export default class Archer extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
         this.body.setCollideWorldBounds(true);
         this.cursors = this.scene.input.keyboard.createCursorKeys();
-        this.cursors_extra = this.scene.input.keyboard.addKeys('A, D, SPACE');
+        //this.cursors = this.scene.input.keyboard.addKeys('A, D, SPACE');
 
     }
 

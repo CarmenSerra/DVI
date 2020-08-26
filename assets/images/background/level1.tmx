@@ -4,7 +4,7 @@
   <export target="level1.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="4096" columns="64">
-  <image source="Cuevas/PixelFantasy_Caves_1.0/tiles.png" width="1024" height="1024"/>
+  <image source="tiles.png" width="1024" height="1024"/>
  </tileset>
  <layer id="1" name="ground" width="149" height="19">
   <data encoding="base64">

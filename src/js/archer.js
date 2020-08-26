@@ -14,8 +14,33 @@ export default class Archer extends Phaser.GameObjects.Sprite {
         this.scene.anims.create({
             key: 'run',
             frames: this.scene.anims.generateFrameNumbers('archer_run', { start: 0, end: 7 }),
+            frameRate: 25,
+          });
+
+          this.scene.anims.create({
+            key: 'jump',
+            frames: this.scene.anims.generateFrameNumbers('archer_jump', { start: 0, end: 11 }),
             frameRate: 15,
           });
+
+          this.scene.anims.create({
+            key: 'dash',
+            frames: this.scene.anims.generateFrameNumbers('archer_dash', { start: 0, end: 13 }),
+            frameRate: 15,
+          });
+
+          this.scene.anims.create({
+            key: 'attack',
+            frames: this.scene.anims.generateFrameNumbers('archer_attack', { start: 0, end: 13 }),
+            frameRate: 15,
+          });
+
+          this.scene.anims.create({
+            key: 'stan',
+            frames: this.scene.anims.generateFrameNumbers('archer', { start: 0, end: 7 }),
+            frameRate: 13,
+          });
+
 
         /*this.scene.anims.create({
             key: 'stanarcher',
@@ -103,11 +128,11 @@ export default class Archer extends Phaser.GameObjects.Sprite {
 
     update(game) {
 
-      /* if (this.cursors.left.isUp  && this.cursors.right.isUp) {
-            this.body.setVelocityX(-300);
-            this.play('stanarcher', true);
+       if (this.cursors.left.isUp  && this.cursors.right.isUp &&  this.cursors.up.isUp && this.cursors.down.isUp ) {
+            this.body.setVelocityX(0);
+            this.play('stan', true);
         } //correr_derecha
-        else*/ if (this.cursors.right.isDown) {
+        else if (this.cursors.right.isDown) {
             this.body.setVelocityX(300);
             this.play('run', true);
         }
@@ -115,15 +140,15 @@ export default class Archer extends Phaser.GameObjects.Sprite {
             this.body.setVelocityX(-300);
             this.play('run', true);
         } //saltar 
-        /*else if (this.cursors.up.isDown) {
-            this.body.setVelocityY(-420);
+        else if (this.cursors.up.isDown) {
+            this.body.setVelocityY(-220);
             this.play('jump', true);
         } //rodar, hacer la voltereta, dash
         else if (this.cursors.down.isDown) {
-            this.body.setVelocityX(-100);
+            this.body.setVelocityX(300);
             this.play('dash', true);
         }//atacar con la flecha
-        else if (this.cursors_extra.SPACE.isDown) {
+        /*else if (this.cursors_extra.SPACE.isDown) {
             this.body.setVelocityX(0);
             this.play('attack', true);
         }//atacar en corto

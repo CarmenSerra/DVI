@@ -30,6 +30,21 @@ export default class Game extends Phaser.Scene {
         this.load.spritesheet('archer_run', 'assets/images/archer/spr_ArcherRun_strip_NoBkg.png',
             { frameWidth: 128, frameHeight: 128 });
 
+        this.load.spritesheet('archer_jump', 'assets/images/archer/spr_ArcherJumpAndFall_strip_NoBkg.png',
+            { frameWidth: 128, frameHeight: 128 });
+
+        this.load.spritesheet('archer_dash', 'assets/images/archer/spr_ArcherDash_strip_NoBkg.png',
+            { frameWidth: 128, frameHeight: 128 });
+
+        this.load.spritesheet('archer_attack', 'assets/images/archer/spr_ArcherAttack_strip_NoBkg.png',
+            { frameWidth: 128, frameHeight: 128 });
+
+        this.load.spritesheet('archer_death', 'assets/images/archer/spr_ArcherDeath_strip_NoBkg.png',
+            { frameWidth: 128, frameHeight: 128 });
+            
+        this.load.spritesheet('archer_front_attack', 'assets/images/archer/spr_ArcherMelee_strip_NoBkg.png',
+            { frameWidth: 128, frameHeight: 128 });
+
         //---------ENEMIGOS--------------
 
 

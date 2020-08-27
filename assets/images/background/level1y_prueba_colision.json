@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"level1.tmx"
+         "target":"level1y_prueba_colision.tmx"
         }
     },
  "height":19,
@@ -18,6 +18,12 @@
          "id":1,
          "name":"ground",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisiona",
+                 "type":"bool",
+                 "value":true
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":149,
@@ -34,7 +40,7 @@
         {
          "columns":64,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/..\/..\/Google Drive\/Curso 19_20\/DVI\/Recuperacion\/Mapas\/Cuevas\/PixelFantasy_Caves_1.0\/tiles.png",
+         "image":"..\/Google Drive\/Curso 19_20\/DVI\/Recuperacion\/Mapas\/Cuevas\/PixelFantasy_Caves_1.0\/tiles.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,

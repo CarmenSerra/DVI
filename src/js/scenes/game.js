@@ -1,4 +1,5 @@
 import Archer from './../archer.js'
+import Flying_Eye from '../enemies/flying_eye.js';
 //Los demas aqui tambien
 
 export default class Game extends Phaser.Scene {
@@ -52,7 +53,15 @@ export default class Game extends Phaser.Scene {
         this.load.spritesheet('archer_front_attack', 'assets/images/archer/spr_ArcherMelee_strip_NoBkg.png',
             { frameWidth: 128, frameHeight: 128 });
 
-        //---------ENEMIGOS--------------
+
+        //------------ENEMIGOS--------------
+        //---------FLYING_EYE-------------
+        this.load.spritesheet('Flight_flying_eye', 'assets/images/enemies/Flight_flying_eye.png',
+            { frameWidth: 150, frameHeight: 150 });
+
+        this.load.spritesheet('Attack_flying_eye', 'assets/images/enemies/Attack_flying_eye.png',
+            { frameWidth: 50, frameHeight: 50 });
+
 
 
     }
@@ -63,6 +72,15 @@ export default class Game extends Phaser.Scene {
         let archer = new Archer(scene, x, y);
         archer.createAnims(); //crear las animaciones del archer
         return archer;
+    }
+
+    spawnFlying_Eye(scene, x, y, enemies) {
+        let flying_eye = new Flying_Eye(scene, x, y);
+        flying_eye.createAnims(); //crear las animaciones del archer
+        flying_eye.setScale(1.5);
+        flying_eye.play('flight', true);
+        enemies.add(flying_eye); //Dice que no está definido
+        return flying_eye;
     }
 
     //----------MAPA POR NIVELES
@@ -87,15 +105,15 @@ export default class Game extends Phaser.Scene {
         switch (level) {
             case 1:
                 back_ground = scene.add.image(0, 100, "bg").setOrigin(0, 0);
-                back_ground.setScale(2,1.26);
+                back_ground.setScale(2, 1.26);
                 back_ground = scene.add.image(0, 100, "bg1").setOrigin(0, 0);
-                back_ground.setScale(2,1.26);
+                back_ground.setScale(2, 1.26);
                 back_ground = scene.add.image(0, 100, "bg2").setOrigin(0, 0);
-                back_ground.setScale(2,1.26);
+                back_ground.setScale(2, 1.26);
                 back_ground = scene.add.image(0, 100, "bg3").setOrigin(0, 0);
-                back_ground.setScale(2,1.26);
+                back_ground.setScale(2, 1.26);
                 back_ground = scene.add.image(0, 100, "bg4a").setOrigin(0, 0);
-                back_ground.setScale(2,1.26);
+                back_ground.setScale(2, 1.26);
 
                 break;
         }
@@ -118,8 +136,9 @@ export default class Game extends Phaser.Scene {
         this.tileset1 = this.map.addTilesetImage('tiles', 'patronesTiled');
         // let layerground = map.createDynamicLayer('ground', tileset); //ground es como se llama en el Tiled
         this.platforms = this.map.createStaticLayer('ground', this.tileset1, 0, 100);
-
-        this.platforms.setCollisionFromCollisionGroup(-1, true);
+        // layerground = this.platforms;
+        //this.platforms.setCollisionFromCollisionGroup(-1, true);
+        this.platforms.setCollisionByExclusion(-1, true);
         //Bounds del mundo
         scene.physics.world.bounds.width = this.platforms.width;
         scene.physics.world.bounds.height = this.platforms.height;
@@ -140,22 +159,49 @@ export default class Game extends Phaser.Scene {
         //------------MAPA
         this.level = 1;
         this.map = this.addMap(this, this.level);
-        this.background = this.addBackGround(this, this.level);
+        //this.background = this.addBackGround(this, this.level);
         this.platforms = this.addGround(this, this.map);
         this.platforms.setScale(2);
-        
+
 
         //------------JUGADOR
-        this.archer = this.spawnPlayer(this, 0, 100, this.platforms);
+        this.archer = this.spawnPlayer(this, 0, 200, this.platforms);
         this.archer.setScale(1.35);
-        this.collider = this.physics.add.collider(this.archer, this.platforms);
+        //this.collider = this.physics.add.collider(this.archer, this.platforms);
 
         //------------CAMARA
         this.addCamera(this, this.archer, this.platforms);
+
+
+        //------------ENEMIGOS
+       /* this.enemies = this.physics.add.group();
+        let flying_eye_1 = new Flying_Eye(this, 100, 250);
+        this.enemies.add(flying_eye_1);
+        this.enemies.getChildren().forEach(function(item) {
+        item.create();
+        item.createAnims();
+        }, this);*/
+
+        this.enemies = this.physics.add.group();
+        this.flying_eye = this.spawnFlying_Eye(this, 300, 200, this.enemies);
+        
+        //this.flying_eye.setScale(1.35);
+        this.collider = this.physics.add.collider(this.flying_eye, this.platforms);
+
+        
+
+        //this.physics.collider(this.enemies,this.platforms);
+        //this.collider2 = this.physics.add.collider(this.enemies, this.platforms);
+        //this.spawnFlying_Eye(this,0,300,this.enemies);
     }
 
     update(time, delta) {
         this.archer.update(this);
+
+        this.flying_eye.preUpdate(time,delta);
+        /*this.enemies.getChildren().forEach(function(item) {
+        item.preUpdate(time,delta);
+        }, this);*/
     }
 
 }

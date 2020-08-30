@@ -3,10 +3,15 @@ export default class Archer extends Phaser.GameObjects.Sprite {
         super(scene, x, y, 'archer');
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-       // this.scene.setBounce(0.1);
         this.body.setCollideWorldBounds(true);
         this.cursors = this.scene.input.keyboard.createCursorKeys();
+        this.Akey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.Spacekey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        //this.cursors = this.scene.input.keyboard.addKey('SPACE');
+        //this.cursors = this.scene.input.keyboard.addKey('A');
         //this.cursors = this.scene.input.keyboard.addKeys('A, D, SPACE');
+
+       
 
     }
 
@@ -43,6 +48,15 @@ export default class Archer extends Phaser.GameObjects.Sprite {
           });
 
 
+          this.scene.anims.create({
+            key: 'front_attack',
+            frames: this.scene.anims.generateFrameNumbers('archer_front_attack', { start: 0, end: 23 }),
+            frameRate: 13,
+          });
+
+
+
+         
         /*this.scene.anims.create({
             key: 'stanarcher',
             frames: this.scene.anims.generateFrameNames('archer', {
@@ -149,16 +163,17 @@ export default class Archer extends Phaser.GameObjects.Sprite {
             this.body.setVelocityX(300);
             this.play('dash', true);
         }//atacar con la flecha
-        /*else if (this.cursors_extra.SPACE.isDown) {
-            this.body.setVelocityX(0);
+        else if (this.Spacekey.isDown) {
+            this.body.setVelocityX(200);
             this.play('attack', true);
         }//atacar en corto
-        else if (this.cursors_extra.A.isDown) {
-            this.body.setVelocityX(0);
+        else if (this.Akey.isDown) {
+            this.body.setVelocityX(200);
             this.play('front_attack', true);
-        }*/
-
-
+        }
+       
+           
+    
         if (this.body.velocity.x < 0)
             this.setFlipX(true); //derecha
         else if (this.body.velocity.x > 0)

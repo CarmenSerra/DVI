@@ -5,13 +5,8 @@ export default class Archer extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
         this.body.setCollideWorldBounds(true);
         this.cursors = this.scene.input.keyboard.createCursorKeys();
-        this.Akey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        this.Spacekey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        //this.cursors = this.scene.input.keyboard.addKey('SPACE');
-        //this.cursors = this.scene.input.keyboard.addKey('A');
-        //this.cursors = this.scene.input.keyboard.addKeys('A, D, SPACE');
-
-       
+        this.Akey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A); //Para atacar en corto 
+        this.Spacekey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE); // Para atacar con flecha 
 
     }
 
@@ -54,100 +49,12 @@ export default class Archer extends Phaser.GameObjects.Sprite {
             frameRate: 13,
           });
 
-
-
-         
-        /*this.scene.anims.create({
-            key: 'stanarcher',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: 'spr_ArcherIdle_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 7,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-            repeat: -1
-        });*/
-
-        /*this.scene.anims.create({
-            key: 'run',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: 'spr_ArcherRun_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 7,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-
-        });
-
-       /* this.scene.anims.create({
-            key: 'jump',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: 'spr_ArcherJumpAndFall_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 11,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-
-        });
-
-
-        this.scene.anims.create({
-            key: 'attack',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: 'spr_ArcherAttack_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 13,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-
-        });
-
-        this.scene.anims.create({
-            key: 'dash',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: 'spr_ArcherDash_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 13,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-
-        });
-
-        this.scene.anims.create({
-            key: 'front_attack',
-            frames: this.scene.anims.generateFrameNames('archer', {
-                prefix: ' spr_ArcherMelee_strip_NoBkg',
-                sufix: '.png',
-                start: 0,
-                end: 23,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-
-        });*/
-
-    
-
-
     }
 
-    update(game) {
-
-       if (this.cursors.left.isUp  && this.cursors.right.isUp &&  this.cursors.up.isUp && this.cursors.down.isUp ) {
-            this.body.setVelocityX(0);
-            this.play('stan', true);
-        } //correr_derecha
-        else if (this.cursors.right.isDown) {
+    preUpdate(t,d) {
+        super.preUpdate(t,d);
+       
+         if (this.cursors.right.isDown) {
             this.body.setVelocityX(300);
             this.play('run', true);
         }
@@ -165,12 +72,18 @@ export default class Archer extends Phaser.GameObjects.Sprite {
         }//atacar con la flecha
         else if (this.Spacekey.isDown) {
             this.body.setVelocityX(200);
+            console.log('pp');
             this.play('attack', true);
         }//atacar en corto
         else if (this.Akey.isDown) {
             this.body.setVelocityX(200);
             this.play('front_attack', true);
         }
+        else if (this.cursors.left.isUp  && this.cursors.right.isUp &&  this.cursors.up.isUp && this.cursors.down.isUp && this.Spacekey.isUp  && this.Akey.isUp) {
+            this.body.setVelocityX(0);
+            this.play('stan', true);
+        }
+        
        
            
     

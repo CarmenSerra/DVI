@@ -12,8 +12,6 @@ export default class Flying_Eye extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
         this.body.setCollideWorldBounds(true);
         //this.body.setVelocityX(15);
-
-
     }
     createAnims() {
 
@@ -31,40 +29,38 @@ export default class Flying_Eye extends Phaser.GameObjects.Sprite {
     }
 
     fly() {
-        //this.body.setSize(0, 50); //ajustar el collider
+        this.body.setSize(0, 0); //ajustar el collider
         this.play('flight', true);
         //this.setGravityX(30);
         //this.setGravityY(0);
+        //this.flipX = true;
         if (this.flipX)
-            this.body.setVelocityX(30);
+            this.body.setVelocityX(100);
         else
-            this.body.setVelocityX(-30);
+            this.body.setVelocityX(-100);
 
     }
 
     preUpdate(t, dt) {
 
-        super.preUpdate(t, dt);
+        super.preUpdate(t, dt);     
         this.fly();
-        //this.play('flight',true);
+        
+        
 
-        /*if (this.flipX)
-        this.body.setVelocityX(3);
-    else
-        this.body.setVelocityX(-3);
-
-        /*if (this.body.touching.right || this.body.blocked.right) {
-            this.body.setVelocityX(-300); // turn left
+       if (this.body.touching.right || this.body.blocked.right) {
+            this.body.setVelocityX(-100); // turn left
         }
         else if (this.body.touching.left || this.body.blocked.left) {
-            this.body.setVelocityX(300); // turn right
-        }*/
+            this.body.setVelocityX(100); // turn right
+        }
+        
 
         /*if (this.body.velocity.x < 0)
             this.setFlipX(true); //derecha
         else if (this.body.velocity.x > 0)
-            this.setFlipX(false); //izquierda
-*/
+            this.setFlipX(false); //izquierda*/
+
     }
 
 

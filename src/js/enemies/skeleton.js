@@ -1,8 +1,8 @@
-export default class Flying_Eye extends Phaser.GameObjects.Sprite {
+export default class Skeleton extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y) {
-        super(scene, x, y, 'flying_eye');
+        super(scene, x, y, 'goblin');
         this.hurtflag = false;
-        this.stayDelayEnemy = 2000; 
+        this.stayDelayEnemy = 2000;
         // this.scene.setBounce(0.1);
     }
 
@@ -14,46 +14,33 @@ export default class Flying_Eye extends Phaser.GameObjects.Sprite {
     }
     createAnims() {
 
+    
         this.scene.anims.create({
-            key: 'flight',
-            frames: this.scene.anims.generateFrameNumbers('Flight_flying_eye', { start: 0, end: 7 }),
+            key: 'attack',
+            frames: this.scene.anims.generateFrameNumbers('Attack_skeleton', { start: 0, end: 7 }),
             frameRate: 5,
         });
 
         this.scene.anims.create({
-            key: 'attack',
-            frames: this.scene.anims.generateFrameNumbers('Attack_flying_eye', { start: 0, end: 7 }),
-            frameRate: 15,
-        });
-
-        this.scene.anims.create({
             key: 'death',
-            frames: this.scene.anims.generateFrameNumbers('Death_flying_eye', { start: 0, end: 3 }),
+            frames: this.scene.anims.generateFrameNumbers('Death_skeleton', { start: 0, end: 3 }),
             frameRate: 15,
         });
 
         this.scene.anims.create({
             key: 'hit',
-            frames: this.scene.anims.generateFrameNumbers('Hit_flying_eye', { start: 0, end: 3 }),
+            frames: this.scene.anims.generateFrameNumbers('Hit_skeleton', { start: 0, end: 3 }),
+            frameRate: 15,
+        });
+
+        this.scene.anims.create({
+            key: 'walk',
+            frames: this.scene.anims.generateFrameNumbers('Walk_skeleton', { start: 0, end: 3 }),
             frameRate: 15,
         });
     }
 
-    fly() {
-        this.body.setSize(0, 0); //ajustar el collider
-        this.play('flight', true);
-        //this.setGravityX(30);
-        //this.setGravityY(0);
-        //this.flipX = true;
-        if (this.flipX)
-            this.body.setVelocityX(100);
-        else
-            this.body.setVelocityX(-100);
-
-    }
-
-
-     /*checkAttack(wolf, game) {
+    /*checkAttack(wolf, game) {
 		if (wolf.isAlive() && this.playerInRange(wolf) && (this.x > wolf.x && !this.flipX || this.x < wolf.x && this.flipX)) { //jugador en rango y dragon mirandolo
 			if (this.coolDown > this.maxcoolDown) {
 				this.body.setVelocityX(0);
@@ -79,11 +66,11 @@ export default class Flying_Eye extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
 
         super.preUpdate(t, dt);     
-        this.fly();
+        //this.fly();
         
         
 
-       if (this.body.touching.right || this.body.blocked.right) {
+      /* if (this.body.touching.right || this.body.blocked.right) {
             this.body.setVelocityX(-100); // turn left
         }
         else if (this.body.touching.left || this.body.blocked.left) {

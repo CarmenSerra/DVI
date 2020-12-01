@@ -4,10 +4,10 @@
 <head>
 
   <meta charset="UTF-8">
-    <link rel="shortcut icon" href="assets/images/icon.png" type="image/png" />
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <link rel="stylesheet" href="src/css/game.css">
-    <script src="./phaser.min.js"></script>
+  <link rel="shortcut icon" href="assets/images/icon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=2.0">
+  <link rel="stylesheet" href="src/css/game.css">
+  <script src="./phaser.min.js"></script>
 
 
   <title>Rompemaldiciones</title>
@@ -17,21 +17,19 @@
   <script type="module">
     import Game from './src/js/scenes/game.js'
     import Level1 from './src/js/scenes/level1.js'
-   
+
 
     var config = {
       type: Phaser.AUTO,
-      width: 1472, //800
-      height: 736, // 600
+      width: 800, //800
+      height: 600, // 600
       pixelArt: true,
-     
+
       scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
       },
-      //scene: [Game, Help, Level1, Level2, Level3, Level4, GameOver, GameWin, PausedGame],
-      //physics: { default: 'arcade', arcade: { gravity: { y: 400 }, debug: false } }
-      scene: [Game,Level1],
+      scene: [Game, Level1],
       physics: {
         default: 'arcade',
         arcade: {
@@ -46,7 +44,6 @@
     new Phaser.Game(config);
   </script>
 
-<!--<canvas width="800" height= "600" style="image-rendering: pixelated; width: 1132px; height: 772px; margin-left: 0px; margin-top: 0px;">-->
 </body>
 
 </html>
